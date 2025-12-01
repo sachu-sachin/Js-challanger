@@ -1,0 +1,268 @@
+[
+    {
+        "id": "objects_intro",
+        "title": "Introduction to Objects",
+        "description": "Learn what objects are and how to store structured data using key-value pairs.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 What Is an Object?\nAn **object** is a collection of related data.\n\nWhile an array stores a list `['red', 'blue']`, an object stores data with **labels** (keys).\n\n```javascript\nconst car = {\n    brand: 'Tesla',\n    model: 'Model 3',\n    year: 2023\n};\n```\nHere, `brand`, `model`, and `year` are **keys**, and `'Tesla'`, `'Model 3'`, `2023` are **values**."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Create an object named 'person'\n// It should have name: 'Alice' and age: 25\n\nconst person = // Your code here\nconsole.log(person);",
+                "instructions": "Define the person object.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ObjectExpression"
+                        },
+                        {
+                            "type": "specificStructure",
+                            "nodeType": "Property",
+                            "key": "name",
+                            "value": "Alice"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "{ name: 'Alice', age: 25 }"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What syntax is used to create an object?",
+                "options": [
+                    "[]",
+                    "{}",
+                    "()",
+                    "<>"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "In { a: 1 }, 'a' is called the:",
+                "options": [
+                    "Index",
+                    "Key",
+                    "Value",
+                    "Type"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "objects_access",
+        "title": "Accessing & Modifying",
+        "description": "Learn how to read and change values inside an object.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 Accessing Properties\nThere are two ways to access data:\n\n### 1. Dot Notation (Most Common)\n```javascript\nconsole.log(car.brand); // 'Tesla'\n```\n\n### 2. Bracket Notation\nUseful if the key has spaces or is stored in a variable.\n```javascript\nconsole.log(car['model']); // 'Model 3'\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Modifying Properties\nYou can change values or add new ones:\n```javascript\ncar.year = 2024; // Update\ncar.color = 'Red'; // Add new\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const user = {\n    name: 'Bob',\n    role: 'Guest'\n};\n\n// 1. Change role to 'Admin'\n// 2. Add a new property 'active' with value true\n\nconsole.log(user);",
+                "instructions": "Update the user object as requested.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "assignment",
+                            "name": "user",
+                            "property": "role",
+                            "value": "Admin"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "{ name: 'Bob', role: 'Admin', active: true }"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which notation allows using variables as keys?",
+                "options": [
+                    "Dot notation (.)",
+                    "Bracket notation ([])",
+                    "Arrow notation (->)",
+                    "None"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "objects_methods",
+        "title": "Object Methods",
+        "description": "Learn how to add functions inside objects.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 Methods\nA function stored inside an object is called a **method**.\n\n```javascript\nconst dog = {\n    name: 'Rex',\n    bark: function() {\n        console.log('Woof!');\n    }\n};\n\ndog.bark(); // Prints: Woof!\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 The 'this' Keyword\nTo access other properties inside the same object, use `this`.\n```javascript\nconst person = {\n    name: 'Alice',\n    greet: function() {\n        console.log('Hello, I am ' + this.name);\n    }\n};\n\nperson.greet(); // Hello, I am Alice\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const calculator = {\n    value: 10,\n    double: function() {\n        // Return this.value * 2\n    }\n};\n\nconsole.log(calculator.double());",
+                "instructions": "Complete the 'double' method to return value * 2.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ThisExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "20"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What is a function inside an object called?",
+                "options": [
+                    "Variable",
+                    "Method",
+                    "Key",
+                    "Element"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What keyword refers to the current object?",
+                "options": [
+                    "self",
+                    "it",
+                    "this",
+                    "object"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "objects_challenges",
+        "title": "Mixed Object Challenges",
+        "description": "Practice working with objects, arrays of objects, and complex data structures.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 Challenge 1: Array of Objects\nYou can store objects inside an array.\n```javascript\nconst users = [\n    { id: 1, name: 'A' },\n    { id: 2, name: 'B' }\n];\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const products = [\n    { name: 'Laptop', price: 1000 },\n    { name: 'Mouse', price: 20 }\n];\n\n// Loop through products and print each name\n// Your code here",
+                "instructions": "Print 'Laptop' and 'Mouse' on separate lines.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "anyOf",
+                            "rules": [
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForOfStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForStatement"
+                                },
+                                {
+                                    "type": "methodCall",
+                                    "method": "forEach"
+                                }
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "Laptop",
+                                "Mouse"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Challenge 2: Nested Objects\nObjects can contain other objects.\n```javascript\nconst user = {\n    name: 'Sam',\n    address: {\n        city: 'New York',\n        zip: 10001\n    }\n};\nconsole.log(user.address.city);\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const student = {\n    name: 'John',\n    grades: {\n        math: 90,\n        science: 85\n    }\n};\n\n// Print the math grade",
+                "instructions": "Access and print the math grade (90).",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "MemberExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "90"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "How do you access 'city' in { loc: { city: 'LA' } }?",
+                "options": [
+                    "loc.city",
+                    "loc[city]",
+                    "city.loc",
+                    "loc->city"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    }
+]

@@ -1,0 +1,854 @@
+[
+    {
+        "id": "strings_basics",
+        "title": "Introduction to Strings",
+        "description": "Learn what strings are and how to create them in JavaScript.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "**Strings** are sequences of characters wrapped in quotes. You can create strings using:\n\n* Single quotes: `'Hello'`\n* Double quotes: `\"Hello\"`\n* Template literals: `` `Hello` ``\n\nTemplate literals are special because they allow **variable interpolation** and **multiline strings**."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const a = 'Hello';\nconst b = \"Hello\";\nconst c = `Hello`;\nconsole.log(a, b, c);"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Create a variable named 'message' with value \"Welcome!\"\n// Log the variable to the console\n",
+                "instructions": "Create a string variable named `message` containing \"Welcome!\" and log it using `console.log(message)`.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "declaration",
+                            "kind": "const",
+                            "name": "message",
+                            "initValue": "Welcome!"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "Welcome!"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "Template literals allow embedding variables directly using `${}` syntax:\n\n```javascript\nconst name = \"Sam\";\nconsole.log(`Hi, ${name}!`);\n```"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which of the following is NOT a valid way to create a string?",
+                "options": [
+                    "'Hi'",
+                    "\"Hi\"",
+                    "`Hi`",
+                    "[(Hi)]"
+                ],
+                "answerIndex": 3
+            },
+            {
+                "question": "Which type of quotes allow variable interpolation?",
+                "options": [
+                    "Single",
+                    "Double",
+                    "Template Literals"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "strings_length",
+        "title": "Get the length of a string",
+        "description": "Learn how to find out how many characters are in a string.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "In JavaScript, every string has a property called **`.length`**. This property tells you exactly how many characters are in the string, including spaces and special characters."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const message = \"Hello World\";\nconsole.log(message.length); // Output: 11"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const str = \"Hello\";\n// Try logging the length of str\nconsole.log(str.length);",
+                "instructions": "This is a playground. Run the code to see the length of the string."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is hiddenly defined for you\n// Log the length of 'str'\n",
+                "instructions": "Log the length of the variable `str` (which is already defined for you behind the scenes).",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\.length"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "hello"
+                            ],
+                            "output": [
+                                "5"
+                            ]
+                        },
+                        {
+                            "input": [
+                                "A"
+                            ],
+                            "output": [
+                                "1"
+                            ]
+                        },
+                        {
+                            "input": [
+                                " "
+                            ],
+                            "output": [
+                                "1"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What property is used to get the character count of a string?",
+                "options": [
+                    ".size",
+                    ".count",
+                    ".length",
+                    ".index"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "What is the length of the string \"Hi!\"?",
+                "code": "console.log(\"Hi!\".length);",
+                "options": [
+                    "2",
+                    "3",
+                    "4",
+                    "undefined"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "strings_access_char",
+        "title": "Accessing Characters",
+        "description": "Learn how to get characters from a string using indexing or charAt.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "Strings behave like arrays of characters. You can access characters using:\n\n* **Indexing**: `str[index]`\n* **Method**: `str.charAt(index)`\n\nRemember, indexing starts at **0**."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const word = \"Hello\";\nconsole.log(word[0]); // 'H'\nconsole.log(word.charAt(4)); // 'o'"
+            },
+            {
+                "type": "theory",
+                "content": "You can combine indexing with `.length` to access the last character of any string: `str[str.length - 1]`."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is provided\n// Log the first character of 'str'\n",
+                "instructions": "Log the **first** character of the string `str`.",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "str\\[0\\]|str\\.charAt\\(0\\)"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "hello"
+                            ],
+                            "output": [
+                                "h"
+                            ]
+                        },
+                        {
+                            "input": [
+                                "A"
+                            ],
+                            "output": [
+                                "A"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What is 'dog'[2]?",
+                "options": [
+                    "d",
+                    "o",
+                    "g"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "What does 'Cat'.charAt(1) return?",
+                "options": [
+                    "C",
+                    "a",
+                    "t"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "strings_concat",
+        "title": "String Concatenation",
+        "description": "Learn how to combine multiple strings.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "To combine strings, you can use the **addition operator (`+`)** or the built-in **`.concat()`** method. The `+` operator is the most common approach.\n\nTemplate literals (backticks) also implicitly concatenate when interpolating."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const part1 = \"Hello\";\nconst part2 = \"World\";\nconst result = part1 + \" \" + part2 + \"!\";\nconsole.log(result); // \"Hello World!\""
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'firstName' and 'lastName' are provided\n// Log the full name (e.g., \"John Doe\")\n",
+                "instructions": "Concatenate `firstName`, a space, and `lastName` to form a full name and log it.",
+                "validate": {
+                    "parameters": [
+                        "firstName",
+                        "lastName"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\+|\\.concat"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "John",
+                                "Doe"
+                            ],
+                            "output": [
+                                "John Doe"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What is \"10\" + \"20\"?",
+                "options": [
+                    "30",
+                    "\"1020\"",
+                    "\"10+20\""
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "strings_search_index",
+        "title": "Finding Substrings (indexOf)",
+        "description": "Learn to find the position of a substring within a string.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "The **`.indexOf(value)`** method searches for a string and returns the **starting index** of the first occurrence.\n\n* If the substring is found, it returns the index (0 or greater).\n* If the substring is **not found**, it returns **`-1`**."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const sentence = \"The quick brown fox.\";\nconsole.log(sentence.indexOf(\"quick\")); // 4\nconsole.log(sentence.indexOf(\"z\")); // -1\nconsole.log(sentence.lastIndexOf(\"o\")); // 15 (finds the last one)"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is provided\n// Log the index of the first space character (' ')\n",
+                "instructions": "Use `indexOf()` to find and log the index of the first space character in `str`.",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\.indexOf\\(' '\\)"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "Hello World"
+                            ],
+                            "output": [
+                                "5"
+                            ]
+                        },
+                        {
+                            "input": [
+                                "JavaScript is fun"
+                            ],
+                            "output": [
+                                "10"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What is 'Cat'.indexOf('a')?",
+                "options": [
+                    "0",
+                    "1",
+                    "2",
+                    "-1"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What does .indexOf() return if the substring is not found?",
+                "options": [
+                    "0",
+                    "null",
+                    "undefined",
+                    "-1"
+                ],
+                "answerIndex": 3
+            }
+        ]
+    },
+    {
+        "id": "strings_slice_substring",
+        "title": "Extracting Parts of a String",
+        "description": "Learn how to extract parts of a string using slice and substring.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "`slice(start, end)` extracts part of a string from `start` index to `end` index (**end is excluded**).\n\n* `substring(start, end)` works similarly but does not support negative indexes.\n* `slice` **supports negative indexes** (counting backward from the end)."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const word = \"JavaScript\";\nconsole.log(word.slice(0, 4)); // 'Java'\nconsole.log(word.slice(4));    // 'Script'\nconsole.log(word.slice(-3));    // 'ipt' (using negative index)"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is provided (e.g., \"Hello World\")\n// Log the first word (words are separated by a space)\n",
+                "instructions": "Use **`indexOf`** to find the position of the first space, then use **`slice`** (from index 0 to the space's index) to extract and log the first word from `str`.",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\.slice",
+                            "\\.indexOf"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "Hello World"
+                            ],
+                            "output": [
+                                "Hello"
+                            ]
+                        },
+                        {
+                            "input": [
+                                "Hi All"
+                            ],
+                            "output": [
+                                "Hi"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What is 'Hello'.slice(1, 4)?",
+                "options": [
+                    "Hel",
+                    "ell",
+                    "llo"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Does slice support negative indexes?",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What is 'Apple'.slice(-3)?",
+                "options": [
+                    "ppl",
+                    "ple",
+                    "App"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "strings_uppercase",
+        "title": "Convert to Uppercase",
+        "description": "Learn how to convert text to capital letters.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "To convert a string to all capital letters, you can use the **`.toUpperCase()`** method.\n\n> [!NOTE]\n> This method returns a **new** string; it doesn't change the original one (strings are immutable)."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const lower = \"hello\";\nconst upper = lower.toUpperCase();\nconsole.log(upper); // \"HELLO\""
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is provided\n// Log the uppercase version of 'str'\n",
+                "instructions": "Log the uppercase version of the variable `str`.",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "requirements": [
+                        {
+                            "type": "methodCall",
+                            "object": "str",
+                            "method": "toUpperCase"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [
+                                "hello"
+                            ],
+                            "output": [
+                                "HELLO"
+                            ]
+                        },
+                        {
+                            "input": [
+                                "World"
+                            ],
+                            "output": [
+                                "WORLD"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Does .toUpperCase() change the original string?",
+                "options": [
+                    "Yes",
+                    "No",
+                    "Sometimes"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "strings_lowercase",
+        "title": "Convert to Lowercase",
+        "description": "Learn to convert text to lowercase letters.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "Use **`.toLowerCase()`** to convert a string to all lowercase. Like `.toUpperCase()`, it returns a new string without changing the original."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const text = \"HELLO WORLD\";\nconsole.log(text.toLowerCase()); // \"hello world\""
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is provided\n// Log the lowercase version of 'str'\n",
+                "instructions": "Log the lowercase version of the variable `str`.",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "requirements": [
+                        {
+                            "type": "methodCall",
+                            "object": "str",
+                            "method": "toLowerCase"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [
+                                "HELLO"
+                            ],
+                            "output": [
+                                "hello"
+                            ]
+                        },
+                        {
+                            "input": [
+                                "JavaScript"
+                            ],
+                            "output": [
+                                "javascript"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does \"Hi!\".toLowerCase() return?",
+                "options": [
+                    "hi!",
+                    "Hi!",
+                    "HI!"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "strings_replace",
+        "title": "Replacing Text",
+        "description": "Use replace and replaceAll to modify parts of strings.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "* **`replace(old, new)`** replaces the **first** match.\n* **`replaceAll(old, new)`** replaces **all** matches.\n\nThese methods return a **new** string."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "console.log(\"a-b-c\".replace(\"-\", \"_\"));    // 'a_b-c'\nconsole.log(\"a-b-c\".replaceAll(\"-\", \"_\")); // 'a_b_c'"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'email' is provided\n// Replace all '.' with '_' and log the result\n",
+                "instructions": "Use `replaceAll` to replace all dots `.` with underscores `_` in the `email` variable and log the result.",
+                "validate": {
+                    "parameters": [
+                        "email"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\.replaceAll"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "a.b@c.com"
+                            ],
+                            "output": [
+                                "a_b@c_com"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which method replaces ALL occurrences?",
+                "options": [
+                    ".replace",
+                    ".change",
+                    ".replaceAll"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "Does .replace modify the original string?",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "strings_split_join",
+        "title": "Splitting & Joining Strings",
+        "description": "Convert strings to arrays and back using split and join.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "* **`split(separator)`** turns a string into an **array**.\n* **`join(separator)`** turns an array into a **string**."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const items = \"a,b,c\".split(\",\");\nconsole.log(items); // ['a', 'b', 'c']\nconsole.log(items.join(\"-\")); // 'a-b-c'"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is provided\n// Log the number of words in 'str'\n",
+                "instructions": "Use `split(' ')` to turn the string into an array of words (assume words are separated by spaces), then use `.length` on the array to count and log the number of words.",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\.split",
+                            "\\.length"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "Hello world"
+                            ],
+                            "output": [
+                                "2"
+                            ]
+                        },
+                        {
+                            "input": [
+                                "One two three"
+                            ],
+                            "output": [
+                                "3"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does 'a-b-c'.split('-') give?",
+                "options": [
+                    "['a','b','c']",
+                    "'abc'",
+                    "['abc']"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What does ['a','b','c'].join('-') return?",
+                "options": [
+                    "'abc'",
+                    "'a-b-c'",
+                    "['a-b-c']"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "strings_trim",
+        "title": "Removing Spaces",
+        "description": "Remove whitespace from strings using trim, trimStart, and trimEnd.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "* **`trim()`** removes whitespace from **both** ends.\n* **`trimStart()`** removes whitespace from the **start**.\n* **`trimEnd()`** removes whitespace from the **end**."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "console.log(\"  hi  \".trim()); // 'hi'"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is provided\n// Log the trimmed version of 'str'\n",
+                "instructions": "Use `trim()` to remove the extra spaces from `str` and log it.",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\.trim\\(\\)"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "  hello "
+                            ],
+                            "output": [
+                                "hello"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does ' hi '.trim() return?",
+                "options": [
+                    "' hi '",
+                    "'hi'",
+                    "'i'"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "strings_search_includes_starts_ends",
+        "title": "Checking String Content",
+        "description": "Learn to check for substrings or start/end patterns.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "* **`includes(value)`** returns `true` if the string contains value.\n* **`startsWith(value)`** checks the beginning.\n* **`endsWith(value)`** checks the end.\n\n> [!WARNING]\n> All these methods are **case-sensitive**."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "console.log(\"JavaScript\".includes(\"Script\")); // true\nconsole.log(\"Hello\".startsWith(\"H\")); // true\nconsole.log(\"Hello\".endsWith(\"o\")); // true"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' is provided\n// Log true if 'str' contains \"Hello\", otherwise false\n",
+                "instructions": "Check if `str` contains \"Hello\" and log the result.",
+                "validate": {
+                    "parameters": [
+                        "str"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\.includes"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "Hello World"
+                            ],
+                            "output": [
+                                "true"
+                            ]
+                        },
+                        {
+                            "input": [
+                                "Hi World"
+                            ],
+                            "output": [
+                                "false"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Does 'Cat'.includes('c') return true?",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Does 'Hello'.startsWith('H') return true?",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "strings_repeat",
+        "title": "Repeat Strings",
+        "description": "Repeat strings using the repeat method.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "**`repeat(n)`** repeats the string `n` times and returns a new string."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "console.log(\"hi\".repeat(3)); // 'hihihi'"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 'str' and 'n' are provided\n// Log 'str' repeated 'n' times\n",
+                "instructions": "Log the string `str` repeated `n` times.",
+                "validate": {
+                    "parameters": [
+                        "str",
+                        "n"
+                    ],
+                    "patterns": {
+                        "required": [
+                            "\\.repeat"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [
+                                "hi",
+                                3
+                            ],
+                            "output": [
+                                "hihihi"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does 'a'.repeat(3) return?",
+                "options": [
+                    "'aaa'",
+                    "'a a a'",
+                    "['a', 'a', 'a']"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    }
+]

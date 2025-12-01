@@ -1,0 +1,725 @@
+[
+    {
+        "id": "loops_intro",
+        "title": "Introduction to Loops",
+        "description": "Learn what loops are and why we use them in programming.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "A **loop** allows you to repeat a block of code multiple times without rewriting it. This is useful when you want to do the same task again and again.\n\nFor example, instead of writing:\n```javascript\nconsole.log(1);\nconsole.log(2);\nconsole.log(3);\n```\nyou can use a loop to automatically repeat the action.\n\nLoops help make code **shorter**, **cleaner**, and **easier to manage**."
+            },
+            {
+                "type": "theory",
+                "content": "There are different kinds of loops in JavaScript:\n\n* **for** loop — repeat a known number of times\n* **while** loop — repeat while a condition is true\n* **do...while** loop — similar to while, but runs at least once\n\nIn this lesson, we will start with the **for loop**."
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Why do programmers use loops?",
+                "options": [
+                    "To repeat tasks without writing the same code many times",
+                    "To store data",
+                    "To stop code from running",
+                    "To create variables"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Which loop is best when you know how many times you want to repeat something?",
+                "options": [
+                    "while loop",
+                    "do...while loop",
+                    "for loop"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "loops_for",
+        "title": "Understanding the For Loop More Deeply",
+        "description": "A deeper look into how the for loop works, focusing on syntax, semicolons, and how each part behaves.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "A for loop has a very specific syntax:\n\n```javascript\nfor (initialization; condition; update) {\n    // code\n}\n```\nEach part plays a unique role, and the **semicolons** (`;`) are important because they separate these three steps.\n\nIf you remove a semicolon, the loop will produce an error because JavaScript won’t understand where one step ends and the next begins."
+            },
+            {
+                "type": "theory",
+                "content": "### 🔹 Order of Execution Inside a For Loop\nA for loop runs in this exact order:\n\n1. **Initialization** → runs only once at the very beginning\n2. **Condition** → checked before every loop\n3. **Loop body** → code inside `{ }` runs if condition is true\n4. **Update** → runs AFTER the body, before the next condition check\n\nThen steps **2 → 3 → 4** repeat until the condition becomes false."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "// Example of the flow\nfor (let i = 0; i < 3; i++) {\n    console.log(\"Looping, i is:\", i);\n}\n/*\nOrder:\n1. i = 0\n2. Check i < 3 → true\n3. Log 0\n4. i++ → i = 1\n5. Check i < 3 → true\n6. Log 1\n7. i++ → i = 2\n8. Check i < 3 → true\n9. Log 2\n10. i++ → i = 3\n11. Check i < 3 → false → stop\n*/"
+            },
+            {
+                "type": "theory",
+                "content": "### 🔹 Understanding Each Part by Manipulating It\nChanging each part of the loop changes its behavior.\n\n#### 1. **Initialization changes where the loop starts**\n```javascript\nfor (let i = 5; i < 10; i++) {}\n// starts from 5\n```\n\n#### 2. **Condition controls when the loop stops**\n```javascript\nfor (let i = 0; i <= 5; i++) {}\n// runs 6 times (0 to 5)\n```\n\nUsing `<` or `<=` is a very important decision.\n\n#### 3. **Update controls how the loop moves**\n```javascript\ni++   // increase by 1\ni--   // decrease by 1\ni += 2  // increase by 2\n```\n\nThese small changes completely change the loop’s behavior."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Experiment: Change ONLY the update part\n// Make the loop print: 0, 2, 4, 6, 8\n\nfor (let i = 0; i <= 8; i++) {\n    // Fix the update part above\n    console.log(i);\n}\n",
+                "instructions": "Modify the loop so it prints **0, 2, 4, 6, 8** by changing ONLY the update step (`i++`).",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "ForStatement"
+                        }
+                    ],
+                    "patterns": {
+                        "required": [
+                            "i\\+=",
+                            "2"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "0",
+                                "2",
+                                "4",
+                                "6",
+                                "8"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "### 🔹 Why the Semicolons Matter\nThe for loop uses semicolons to separate the three stages.\nThis is why the following is **incorrect**:\n```javascript\nfor (let i = 0 i < 5 i++) {}\n```\nThere is no `;` between the parts.\n\nThe correct version is:\n```javascript\nfor (let i = 0; i < 5; i++) {}\n```"
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "// Missing semicolons = ERROR\nfor (let i = 0 i < 5 i++) {\n    console.log(i);\n} // ❌ SyntaxError"
+            },
+            {
+                "type": "theory",
+                "content": "### 🔹 You Can Leave Parts Empty (But Shouldn’t Yet)\nA for loop technically allows empty parts:\n```javascript\nfor (;;) {}\n```\nBut this creates an **infinite loop**.\n\nBeginners should NOT use empty parts yet — we keep full syntax until understanding is strong."
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which symbol separates the three parts of the for loop?",
+                "options": [
+                    "Comma (,)",
+                    "Semicolon (;)",
+                    "Colon (:)",
+                    "Period (.)"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which part of a for loop runs only ONCE?",
+                "options": [
+                    "Initialization",
+                    "Condition",
+                    "Update",
+                    "Loop Body"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What happens if you remove a semicolon inside the for loop parenthesis?",
+                "options": [
+                    "Nothing changes",
+                    "The loop runs faster",
+                    "JavaScript throws a syntax error",
+                    "The loop skips one iteration"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "Which update statement makes the loop count by 2?",
+                "options": [
+                    "i--",
+                    "i++",
+                    "i += 2",
+                    "i = i"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "loops_while",
+        "title": "The While Loop",
+        "description": "Understand while loops with real challenges and behavior comparisons.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "A **while loop** repeats code **as long as the condition is true**.\n\n```javascript\nwhile (condition) {\n    // runs while condition is true\n}\n```\nUse it when you **don’t know the exact number of repetitions**."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "let num = 0;\nwhile (num < 3) {\n    console.log(num);\n    num++;\n}"
+            },
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge 1: Count Down Instead of Up\nBelow code counts up. Modify ONLY the update so it counts **down from 5 to 1**."
+            },
+            {
+                "type": "editor",
+                "startingCode": "let i = 5;\nwhile (i > 0) {\n    console.log(i);\n    // Your change here\n}",
+                "instructions": "Fix the update so the loop prints: 5, 4, 3, 2, 1",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "WhileStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "5",
+                                "4",
+                                "3",
+                                "2",
+                                "1"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge 2: Convert This For Loop into a While Loop\n```javascript\nfor (let i = 0; i < 4; i++) {\n    console.log(i);\n}\n```\nDo NOT change the output — only rewrite using `while`."
+            },
+            {
+                "type": "theory",
+                "content": "## ⚠ Common Mistake: Forgetting the Update\nThis creates an infinite loop:\n```javascript\nlet x = 0;\nwhile (x < 5) {\n    console.log(x);\n}\n```"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "A while loop continues running as long as ______.",
+                "options": [
+                    "the update expression runs",
+                    "the condition remains true",
+                    "there is a break statement",
+                    "JavaScript allows it"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which situation is best for a while loop?",
+                "options": [
+                    "Looping a fixed number of times",
+                    "Looping over object keys",
+                    "Repeating until user input is valid",
+                    "Looping through array indexes"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "What is the MOST common source of infinite loops?",
+                "options": [
+                    "Condition always true",
+                    "Multiple console.logs()",
+                    "Too many variables",
+                    "Using numbers instead of strings"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Which is TRUE about while loops?",
+                "options": [
+                    "They guarantee at least one run",
+                    "They require an index variable",
+                    "Their condition is checked before each iteration",
+                    "They can only count upward"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "loops_do_while",
+        "title": "The Do...While Loop",
+        "description": "Learn how do...while guarantees one execution and solve real behavior challenges.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "`do...while` runs the code **at least once**, even if the condition is false.\n\n```javascript\ndo {\n   // runs first\n} while (condition);\n```"
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "let value = 10;\ndo {\n    console.log(\"running...\");\n} while (value < 5);\n// prints once even though condition is false"
+            },
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge: Predict the Output\n```javascript\nlet x = 0;\ndo {\n    console.log(x);\n    x++;\n} while (x < 0);\n```\nWhat prints? (Answer mentally before checking.)"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Fix this do...while so it prints numbers 1 to 3\nlet i = 1;\ndo {\n    console.log(i);\n    // your update\n} while (/* correct condition */);",
+                "instructions": "Modify the update and condition only.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "DoWhileStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "1",
+                                "2",
+                                "3"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What makes do...while different from while?",
+                "options": [
+                    "It runs the body at least once",
+                    "It doesn't need a condition",
+                    "It is only used for arrays",
+                    "It runs faster"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Where is the condition checked in a do...while loop?",
+                "options": [
+                    "Before the body",
+                    "After the body executes",
+                    "Randomly",
+                    "It depends on JavaScript version"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which situation is perfect for do...while?",
+                "options": [
+                    "Ensuring a menu shows at least once",
+                    "Looping through object keys",
+                    "Looping when you know the number of iterations",
+                    "Looping a fixed array"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "loops_for_in",
+        "title": "The For...In Loop",
+        "description": "Learn to loop through object keys with challenges that connect values and keys.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "`for...in` loops through **keys** of an object.\n\n```javascript\nfor (let key in obj) {\n    console.log(key, obj[key]);\n}\n```"
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const user = { name: \"Max\", age: 21, city: \"Rome\" };\nfor (let k in user) {\n    console.log(k, user[k]);\n}"
+            },
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge: Count Properties\nUsing `for...in`, count how many keys this object has:\n```javascript\nconst car = { brand: \"Toyota\", year: 2020, color: \"red\" };\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand:\"Toyota\", year:2020, color:\"red\" };\nlet count = 0;\n// write your loop here\nconsole.log(count);",
+                "instructions": "Make console print: 3",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "ForInStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "3"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "⚠ Not recommended for arrays because order is not guaranteed."
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does a for...in loop iterate over?",
+                "options": [
+                    "Values",
+                    "Keys",
+                    "Indexes only",
+                    "Numbers only"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which data structure is ideal for for...in?",
+                "options": [
+                    "Objects",
+                    "Arrays",
+                    "Sets",
+                    "Strings"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Which is a possible disadvantage of using for...in for arrays?",
+                "options": [
+                    "It skips values",
+                    "Order is not guaranteed",
+                    "It runs slower",
+                    "It only loops two times"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "In a for...in loop, what does the loop variable represent?",
+                "options": [
+                    "The value",
+                    "The key",
+                    "A random number",
+                    "A character"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which loop prints all object property names?",
+                "options": [
+                    "for...in",
+                    "for",
+                    "forEach",
+                    "while"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "loops_for_of",
+        "title": "The For...Of Loop",
+        "description": "Learn the value-focused loop and compare it directly with for...in.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "`for...of` loops through **values**, perfect for arrays.\n\n```javascript\nfor (let value of array) {}\n```"
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const nums = [10, 20, 30];\nfor (let n of nums) {\n    console.log(n);\n}"
+            },
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge: Convert for...in to for...of\nRewrite this so it logs the same **values**:\n```javascript\nconst letters = ['a', 'b', 'c'];\nfor (let i in letters) {\n    console.log(letters[i]);\n}\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const letters = ['a','b','c'];\n// rewrite using for...of",
+                "instructions": "Must print: a b c",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "ForOfStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "a",
+                                "b",
+                                "c"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "for...of loops over:",
+                "options": [
+                    "Keys",
+                    "Indexes",
+                    "Values",
+                    "Properties"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "Which data structures support for...of?",
+                "options": [
+                    "Objects only",
+                    "Arrays, strings, sets, maps",
+                    "Numbers only",
+                    "Functions"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which loop is best to print each character in a string?",
+                "options": [
+                    "for...in",
+                    "for...of",
+                    "while"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What does `for (let item of arr)` give you?",
+                "options": [
+                    "The index",
+                    "The key",
+                    "The actual value",
+                    "Nothing"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "loops_foreach",
+        "title": "The forEach Method",
+        "description": "Learn the callback-based loop and practice tracking indexes.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "`forEach` lets you run a function on each array item.\n\n```javascript\narray.forEach(function(item, index) {})\n```"
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const foods = ['rice', 'pasta', 'bread'];\nfoods.forEach(function(f, i) {\n    console.log(i, f);\n});"
+            },
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge: Multiply Each Value by 2\nFill in the callback correctly."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const nums = [1,2,3];\nnums.forEach(function( /* parameters */ ){\n    // print each number * 2\n});",
+                "instructions": "Expected output: 2, 4, 6",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "methodCall",
+                            "object": "nums",
+                            "method": "forEach"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "2",
+                                "4",
+                                "6"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does forEach require to work?",
+                "options": [
+                    "A callback function",
+                    "A condition",
+                    "A key list",
+                    "An initializer"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "forEach is a method of:",
+                "options": [
+                    "Objects",
+                    "Strings",
+                    "Arrays",
+                    "Numbers"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "Which values does forEach provide to the callback?",
+                "options": [
+                    "key only",
+                    "value only",
+                    "value and index",
+                    "just the array length"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "What does forEach return?",
+                "options": [
+                    "A new array",
+                    "Nothing (undefined)",
+                    "The last item",
+                    "True"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which is a limitation of forEach?",
+                "options": [
+                    "You cannot break out early",
+                    "It can’t loop arrays",
+                    "It only loops backward",
+                    "It skips the first item"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "loops_mixed_challenges",
+        "title": "Mixed Loop Challenges",
+        "description": "A mix of all loop types to build real mastery.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge 1: Print Only Even Numbers (Choose ANY loop!)\nNumbers: [1,2,3,4,5,6]\nGoal: print 2, 4, 6"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const list = [1,2,3,4,5,6];\n// use any loop you prefer",
+                "instructions": "Output: 2 4 6",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "anyOf",
+                            "rules": [
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "WhileStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "DoWhileStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForInStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForOfStatement"
+                                },
+                                {
+                                    "type": "methodCall",
+                                    "object": "list",
+                                    "method": "forEach"
+                                }
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "2",
+                                "4",
+                                "6"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge 2: List All Keys and Values\nObject: `{a:1, b:2, c:3}`\nUse **for...in**."
+            },
+            {
+                "type": "theory",
+                "content": "## ⭐ Challenge 3: Loop Over a String Using for...of\nString: \"CAT\"\nExpected: C A T"
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which loop is BEST for looping until something happens?",
+                "options": [
+                    "for",
+                    "while",
+                    "forEach",
+                    "for...in"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which loop is best for looping object keys?",
+                "options": [
+                    "for...of",
+                    "for...in",
+                    "forEach",
+                    "while"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which loop is best for looping through values only?",
+                "options": [
+                    "for...in",
+                    "for...of",
+                    "while",
+                    "for"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which loop CANNOT be broken using 'break'?",
+                "options": [
+                    "for",
+                    "while",
+                    "do...while",
+                    "forEach"
+                ],
+                "answerIndex": 3
+            },
+            {
+                "question": "Which loop runs at least once guaranteed?",
+                "options": [
+                    "for",
+                    "while",
+                    "forEach",
+                    "do...while"
+                ],
+                "answerIndex": 3
+            },
+            {
+                "question": "Which loop is MOST ideal for looping arrays with indexes?",
+                "options": [
+                    "forEach",
+                    "for...in",
+                    "for",
+                    "for...of"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    }
+]

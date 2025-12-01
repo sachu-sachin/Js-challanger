@@ -1,0 +1,38 @@
+[
+    {
+        "id": "variables",
+        "title": "Variables & Constants",
+        "description": "Learn how to store data in variables and constants.",
+        "icon": "Box"
+    },
+    {
+        "id": "strings",
+        "title": "Strings",
+        "description": "Learn how to work with text.",
+        "icon": "Type"
+    },
+    {
+        "id": "loops",
+        "title": "Loops",
+        "description": "Learn how to repeat code.",
+        "icon": "Repeat"
+    },
+    {
+        "id": "arrays",
+        "title": "Arrays",
+        "description": "Store multiple values in a single variable.",
+        "icon": "List"
+    },
+    {
+        "id": "objects",
+        "title": "Objects",
+        "description": "Store collections of data.",
+        "icon": "Package"
+    },
+    {
+        "id": "functions",
+        "title": "Functions",
+        "description": "Reusable blocks of code.",
+        "icon": "Code"
+    }
+]

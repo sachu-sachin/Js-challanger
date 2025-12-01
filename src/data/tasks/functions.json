@@ -1,0 +1,430 @@
+[
+    {
+        "id": "functions_intro",
+        "title": "Introduction to Functions",
+        "description": "Learn what functions are, why we use them, and how to define and call them.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 What Is a Function?\nA **function** is a reusable block of code designed to perform a specific task.\n\nInstead of writing the same code over and over:\n```javascript\nconsole.log('Hello!');\nconsole.log('Hello!');\nconsole.log('Hello!');\n```\nWe can define a function once and use it many times."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Defining and Calling a Function\n### 1. Definition\n```javascript\nfunction greet() {\n    console.log('Hello, World!');\n}\n```\n\n### 2. Call (Invocation)\nThe code inside the function doesn't run until you **call** it:\n```javascript\ngreet(); // Prints: Hello, World!\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Define a function named 'sayHi'\n// It should print 'Hi there!'\n\n// Call the function",
+                "instructions": "Define the function and call it.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "FunctionDeclaration",
+                            "name": "sayHi"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "CallExpression",
+                            "callee": "sayHi"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "Hi there!"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What keyword is used to define a function?",
+                "options": [
+                    "func",
+                    "def",
+                    "function",
+                    "method"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "How do you execute a function named 'run'?",
+                "options": [
+                    "run",
+                    "run()",
+                    "call run",
+                    "execute run"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "functions_params",
+        "title": "Parameters & Return",
+        "description": "Learn how to pass data into functions and get results back.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 What Are Parameters & Arguments?\nIn a function, **parameters** are the placeholders defined in the function declaration that receive values when the function is called. The values passed into the function are called **arguments**.\n\n### Example 1:\n```javascript\nfunction greet(name) {\n    console.log('Hello, ' + name);\n}\n\ngreet('Alice'); // 'Alice' is the argument\ngreet('Bob'); // 'Bob' is the argument\n```\n- `name` is the **parameter**.\n- `'Alice'` and `'Bob'` are the **arguments** passed to the function."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Multiple Parameters\nFunctions can have more than one parameter.\n\n### Example 2:\n```javascript\nfunction greet(name, age) {\n    console.log('Hello, ' + name + '. You are ' + age + ' years old.');\n}\n\ngreet('Alice', 25); // 'Alice' and 25 are arguments\ngreet('Bob', 30); // 'Bob' and 30 are arguments\n```\nIn this case:\n- `name` and `age` are **parameters**.\n- `'Alice'` and `25`, `'Bob'` and `30` are **arguments**."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Default Parameters\nYou can set default values for parameters if no argument is passed.\n\n### Example 3:\n```javascript\nfunction greet(name = 'Guest') {\n    console.log('Hello, ' + name);\n}\n\ngreet(); // Uses the default value 'Guest'\ngreet('Alice'); // 'Alice' is the argument\n```\nIf no argument is passed, the function uses `'Guest'` as the default value for `name`."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Return Values\nA function can send a value back to the caller using the `return` keyword. Once a function hits a `return` statement, it stops executing and sends the value back.\n\n### Example 4:\n```javascript\nfunction add(a, b) {\n    return a + b;\n}\n\nlet sum = add(5, 3); // Returns 8\nconsole.log(sum); // Prints: 8\n```\nThe `add()` function returns the sum of `a` and `b`. The returned value is assigned to the variable `sum`."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Combining Parameters & Return\nFunctions can take multiple parameters and return a result based on them.\n\n### Example 5:\n```javascript\nfunction calculateArea(length, width) {\n    return length * width;\n}\n\nlet area = calculateArea(10, 5); // Returns 50\nconsole.log(area); // Prints: 50\n```\nThe `calculateArea()` function takes two parameters, calculates the area, and returns the result."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Create a function 'addNumbers' that takes two parameters, adds them together, and returns the result\n\n// Call it with 7 and 3, and print the result",
+                "instructions": "Define the 'addNumbers' function and print the result of addNumbers(7, 3).",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "FunctionDeclaration",
+                            "name": "addNumbers"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ReturnStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "10"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Handling Undefined Arguments\nIf an argument is missing when the function is called, it will result in **undefined**. You can handle this using default parameters.\n\n### Example 6:\n```javascript\nfunction greet(name = 'Guest', age = 18) {\n    console.log('Hello, ' + name + '. You are ' + age + ' years old.');\n}\n\ngreet(); // 'Hello, Guest. You are 18 years old.'\ngreet('Alice'); // 'Hello, Alice. You are 18 years old.'\ngreet('Bob', 30); // 'Hello, Bob. You are 30 years old.'\n```\nIf we call `greet()` without arguments, it uses the default values."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Write a function called 'calculateCost' that takes the price of an item and a discount percentage.\n// It should return the final price after applying the discount.\n\n// Call it with a price of 100 and a discount of 20%, and print the result",
+                "instructions": "Define the 'calculateCost' function and print the result of calculateCost(100, 20).",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "FunctionDeclaration",
+                            "name": "calculateCost"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ReturnStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "80"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Rest Parameters (Collecting Arguments)\nRest parameters allow you to handle a variable number of arguments in a function.\n\n### Example 7:\n```javascript\nfunction sumAll(...numbers) {\n    return numbers.reduce((total, num) => total + num, 0);\n}\n\nconsole.log(sumAll(1, 2, 3, 4, 5)); // Returns 15\nconsole.log(sumAll(10, 20)); // Returns 30\n```\nThe `...numbers` rest parameter collects all arguments into an array so you can work with them dynamically."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Write a function called 'concatenateStrings' that accepts any number of string arguments and returns them concatenated together.\n\n// Call it with 'Hello', 'World', and '!', and print the result",
+                "instructions": "Define the 'concatenateStrings' function and print the result of concatenateStrings('Hello', 'World', '!').",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "FunctionDeclaration",
+                            "name": "concatenateStrings"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "HelloWorld!"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Arrow Functions with Parameters\nYou can define functions with parameters using the **arrow syntax** for a more concise form.\n\n### Example 8:\n```javascript\nconst greet = (name = 'Guest') => console.log('Hello, ' + name);\n\ngreet(); // 'Hello, Guest'\ngreet('Alice'); // 'Hello, Alice'\n```\nArrow functions are useful for simple one-liner functions."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Nested Functions\nFunctions can also call other functions within them, creating **nested functions**.\n\n### Example 9:\n```javascript\nfunction outer() {\n    function inner() {\n        return 'I am inside!';\n    }\n\n    return inner(); // Calling the inner function\n}\n\nconsole.log(outer()); // 'I am inside!'\n```\nIn this example, the `outer()` function calls the `inner()` function."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Write a function called 'convertToCelsius' that takes a temperature in Fahrenheit and converts it to Celsius.\n\n// Call it with 98.6 and print the result",
+                "instructions": "Define the 'convertToCelsius' function and print the result of convertToCelsius(98.6).",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "FunctionDeclaration",
+                            "name": "convertToCelsius"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ReturnStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "37"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What is a parameter?",
+                "options": [
+                    "A) A value passed into a function",
+                    "B) A placeholder in a function definition",
+                    "C) A return value from a function",
+                    "D) A function’s output"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What will happen if a function is called with missing arguments, and no default value is provided?",
+                "options": [
+                    "A) The function will throw an error",
+                    "B) The function will use undefined as the value for the missing argument",
+                    "C) The function will ignore the missing argument",
+                    "D) The function will use null as the value for the missing argument"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What does the return keyword do in a function?",
+                "options": [
+                    "A) It stops the function and sends a value back to the caller",
+                    "B) It starts the function",
+                    "C) It sets a default value for a parameter",
+                    "D) It continues executing the function"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "functions_arrow",
+        "title": "Arrow Functions",
+        "description": "Learn the modern, shorter syntax for writing functions.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 Arrow Functions: An Introduction\nArrow functions provide a shorter syntax to define functions. They were introduced in ES6 (ECMAScript 2015).\n\n### Regular Function Syntax:\n```javascript\nconst add = function(a, b) {\n    return a + b;\n};\n```\n\n### Arrow Function Syntax:\n```javascript\nconst add = (a, b) => {\n    return a + b;\n};\n```\nThis is more concise, but the real power of arrow functions is when the body of the function contains just a single expression."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Shorter Syntax for Single Expressions\nIf the function has only one expression, you can omit the curly braces `{}` and the `return` keyword.\n\n### Example:\n```javascript\nconst add = (a, b) => a + b;\n```\nThis is equivalent to:\n```javascript\nconst add = (a, b) => {\n    return a + b;\n};\n```\nBy omitting the block of code, the arrow function implicitly returns the result of the expression."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Arrow Functions with One Parameter\nIf your function takes only one parameter, you can omit the parentheses `()` around the parameter.\n\n### Example (One Parameter):\n```javascript\nconst greet = name => 'Hello, ' + name;\nconsole.log(greet('Alice')); // 'Hello, Alice'\n```\nIf there is only one parameter, you don’t need to use parentheses `()`, but for zero or more parameters, they are required."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Arrow Functions with No Parameters\nIf your function doesn't take any parameters, you still need to use empty parentheses `()`.\n\n### Example (No Parameters):\n```javascript\nconst getRandom = () => Math.random();\nconsole.log(getRandom()); // A random number between 0 and 1\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Key Difference: Arrow Functions and `this`\nIn regular functions, the value of `this` is determined by how the function is called. However, **arrow functions do not have their own `this`**. Instead, they inherit `this` from the surrounding scope.\n\n### Example (Regular Function):\n```javascript\nconst person = {\n    name: 'Alice',\n    greet: function() {\n        console.log('Hello, ' + this.name);\n    }\n};\nperson.greet(); // 'Hello, Alice'\n```\n\n### Example (Arrow Function):\n```javascript\nconst personArrow = {\n    name: 'Bob',\n    greet: () => {\n        console.log('Hello, ' + this.name); // 'this' refers to the global object\n    }\n};\npersonArrow.greet(); // undefined (or 'Hello, undefined' in some environments)\n```\nThis difference can be important when dealing with event listeners or callbacks."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Convert this to an arrow function\n// function square(n) {\n//     return n * n;\n// }\n\nconst square = // Your code here\nconsole.log(square(5));",
+                "instructions": "Rewrite the `square` function as an arrow function and print square(5).",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ArrowFunctionExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "25"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Arrow Functions with Multiple Parameters\nArrow functions can accept multiple parameters. You need to enclose them in parentheses `()`.\n\n### Example (Multiple Parameters):\n```javascript\nconst multiply = (a, b) => a * b;\nconsole.log(multiply(2, 5)); // 10\n```\nIn this example, we have two parameters `a` and `b`. You can use any number of parameters in arrow functions, just like regular functions."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Rewrite the function to calculate the sum of two numbers as an arrow function\n// function sum(a, b) {\n//     return a + b;\n// }\n\nconst sum = // Your code here\nconsole.log(sum(4, 6));",
+                "instructions": "Rewrite the `sum` function as an arrow function and print sum(4, 6).",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ArrowFunctionExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "10"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which symbol is used in arrow functions?",
+                "options": [
+                    "A) ->",
+                    "B) =>",
+                    "C) ::",
+                    "D) =="
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What happens to 'this' inside an arrow function?",
+                "options": [
+                    "A) Arrow functions have their own 'this'.",
+                    "B) Arrow functions inherit 'this' from the surrounding scope.",
+                    "C) 'this' is undefined inside arrow functions.",
+                    "D) Arrow functions do not use 'this'."
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "How do you write an arrow function with one parameter?",
+                "options": [
+                    "A) const functionName = function(param) => { return param; }",
+                    "B) const functionName = (param) => param;",
+                    "C) const functionName = param => param;",
+                    "D) const functionName = param => { return param; }"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "functions_challenges",
+        "title": "Mixed Function Challenges",
+        "description": "Apply your knowledge of functions, parameters, and logic.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 Challenge 1: Check Even or Odd\nWrite a function `isEven(num)` that returns `true` if the number is even, and `false` otherwise.\n\nExample:\n`isEven(4)` → `true`\n`isEven(7)` → `false`"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Write function isEven(num)\n\n// console.log(isEven(10));\n// console.log(isEven(7));",
+                "instructions": "Implement isEven and print the results for 10 and 7.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "FunctionDeclaration",
+                            "name": "isEven"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Challenge 2: Find Max\nWrite an arrow function `findMax` that takes two numbers and returns the larger one.\n\nExample:\n`findMax(10, 20)` → `20`"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const findMax = // Your arrow function here\n\nconsole.log(findMax(10, 20));\nconsole.log(findMax(50, 5));",
+                "instructions": "Implement findMax as an arrow function.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ArrowFunctionExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "20",
+                                "50"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Can a function call another function?",
+                "options": [
+                    "Yes",
+                    "No",
+                    "Only in strict mode",
+                    "Only if they are in the same file"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    }
+]

@@ -1,0 +1,315 @@
+[
+    {
+        "id": "variables_constants_intro",
+        "title": "Variables & Constants",
+        "description": "Learn how to store data using let and const.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "**Variables** are containers for storing data values. In modern JavaScript, we use:\n\n*   `let`: For values that can change.\n*   `const`: For values that remain constant (cannot be reassigned).\n\n> [!IMPORTANT]\n> Avoid using `var` as it has outdated scoping rules."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "let score = 10;\nscore = 20; // OK\n\nconst pi = 3.14;\npi = 3.15; // Error!"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// 1. Declare a variable 'name' using let and assign it \"Player\"\n// 2. Declare a constant 'version' using const and assign it 1.0\n\n// Log both to console\n",
+                "instructions": "Declare a variable `name` with value \"Player\" and a constant `version` with value `1.0`. Then log both using `console.log(name, version)`.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "declaration",
+                            "kind": "let",
+                            "name": "name",
+                            "initValue": "Player"
+                        },
+                        {
+                            "type": "declaration",
+                            "kind": "const",
+                            "name": "version",
+                            "initValue": 1.0
+                        },
+                        {
+                            "type": "callExpression",
+                            "callee": "console.log",
+                            "arguments": [
+                                "name"
+                            ]
+                        },
+                        {
+                            "type": "callExpression",
+                            "callee": "console.log",
+                            "arguments": [
+                                "version"
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "Player 1"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which keyword should you use for a value that will never change?",
+                "options": [
+                    "let",
+                    "const",
+                    "var"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Can you reassign a variable declared with let?",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "variables_declaration_initialization_assignment",
+        "title": "Declaration vs Assignment",
+        "description": "Understand the difference between declaring and assigning variables.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "*   **Declaration**: Creating a variable (e.g., `let x;`).\n*   **Initialization**: Assigning an initial value (e.g., `let x = 10;`).\n*   **Assignment**: Updating the value (e.g., `x = 20;`)."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "let x; // Declaration (value is undefined)\nx = 5; // Assignment\nlet y = 10; // Initialization"
+            },
+            {
+                "type": "editor",
+                "startingCode": "let score = 0;\n// Update score to 10\n\nconsole.log(score);",
+                "instructions": "Update the value of the `score` variable to `10` before it is logged.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "assignment",
+                            "name": "score",
+                            "value": 10
+                        },
+                        {
+                            "type": "callExpression",
+                            "callee": "console.log",
+                            "arguments": [
+                                "score"
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "10"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What is the value of 'let a;' before assignment?",
+                "options": [
+                    "null",
+                    "0",
+                    "undefined"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "variables_scope_hoisting",
+        "title": "Scope & Block Scope",
+        "description": "Learn where variables are accessible.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "`let` and `const` are **block-scoped**. This means they only exist within the `{}` block where they are defined."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "if (true) {\n  let message = \"Hi\";\n}\nconsole.log(message); // Error: message is not defined"
+            },
+            {
+                "type": "editor",
+                "startingCode": "if (true) {\n  let x = 10;\n}\n// x is not accessible here. Fix the code so x is logged.\nconsole.log(x);",
+                "instructions": "Fix the scope issue so that `x` can be logged outside the `if` block.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "declaration",
+                            "kind": "let",
+                            "name": "x"
+                        },
+                        {
+                            "type": "callExpression",
+                            "callee": "console.log",
+                            "arguments": [
+                                "x"
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "10"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Are let and const block-scoped?",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "variables_TDZ",
+        "title": "Temporal Dead Zone",
+        "description": "Understand why you can't use variables before declaring them.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "The **Temporal Dead Zone (TDZ)** is the time between entering a scope and the actual declaration of a variable. You cannot access a `let` or `const` variable before its declaration line."
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "console.log(name); // Error!\nlet name = \"Sam\";"
+            },
+            {
+                "type": "editor",
+                "startingCode": " console.log(value);\nlet value = 100;",
+                "instructions": "The commented out code would cause an error. Ensure `value` is logged *after* declaration.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "declaration",
+                            "kind": "let",
+                            "name": "value"
+                        },
+                        {
+                            "type": "callExpression",
+                            "callee": "console.log",
+                            "arguments": [
+                                "value"
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "100"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Can you access a 'let' variable before it is declared?",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "variables_best_practices",
+        "title": "Naming Best Practices",
+        "description": "Learn how to name variables correctly.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "Use **camelCase** for variable names (e.g., `userName`, `totalScore`). Variable names should be descriptive."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Rename these to camelCase\nlet User_Name = \"Alex\";\nlet userage = 25;\n\n// Log them using the new names\nconsole.log(User_Name, userage);",
+                "instructions": "Rename the variables to `userName` and `userAge` to follow camelCase conventions, and update the `console.log` statement.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "declaration",
+                            "kind": "let",
+                            "name": "userName"
+                        },
+                        {
+                            "type": "declaration",
+                            "kind": "let",
+                            "name": "userAge"
+                        },
+                        {
+                            "type": "callExpression",
+                            "callee": "console.log",
+                            "arguments": [
+                                "userName"
+                            ]
+                        },
+                        {
+                            "type": "callExpression",
+                            "callee": "console.log",
+                            "arguments": [
+                                "userAge"
+                            ]
+                        }
+                    ],
+                    "patterns": {
+                        "forbidden": [
+                            "User_Name",
+                            "userage"
+                        ]
+                    },
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "Alex 25"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which is the correct camelCase format?",
+                "options": [
+                    "user_name",
+                    "UserName",
+                    "userName"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    }
+]

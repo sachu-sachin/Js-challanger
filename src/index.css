@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors - Golden Theme */
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-light: #F4D03F;
+  --color-brand-gold-dim: #8A7118;
+  
+  /* Accents */
+  --color-brand-primary: #D4AF37; /* Mapping primary to gold for now */
+  --color-brand-secondary: #10b981; /* Emerald for success/secondary */
+  
+  /* Surface Colors - Deep Dark */
+  --color-surface-950: #050505; /* Almost black */
+  --color-surface-900: #0a0a0a; /* Very dark gray */
+  --color-surface-800: #171717; /* Dark gray */
+  --color-surface-700: #262626;
+  --color-surface-600: #404040;
+
+  /* Text Colors */
+  --color-text-100: #fafafa;
+  --color-text-200: #e5e5e5;
+  --color-text-300: #d4d4d4;
+  --color-text-400: #a3a3a3;
+  --color-text-500: #737373;
+
+  /* Status Colors */
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+}
+
+body {
+  @apply antialiased text-gray-100 bg-gray-950;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-surface-950);
+  color: var(--color-text-100);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-950);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-800);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-700);
+}
+
+/* Premium Text Utilities */
+.text-gold {
+  color: var(--color-brand-gold);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(to right, #D4AF37, #F4D03F, #D4AF37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.border-gold {
+  border-color: var(--color-brand-gold-dim);
+}
+
+.bg-gold-glow {
+  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+}
+
+/* Markdown Typography Overrides */
+.prose strong {
+  color: var(--color-brand-gold);
+  font-weight: 600;
+}
+
+.prose code {
+  color: var(--color-brand-gold-light);
+  background-color: rgba(212, 175, 55, 0.1);
+  padding: 0.1em 0.3em;
+  border-radius: 0.2em;
+  font-weight: 500;
+}
+
+.prose blockquote {
+  border-left-color: var(--color-brand-gold);
+  background-color: rgba(212, 175, 55, 0.05);
+  padding: 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: var(--color-text-200);
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  color: var(--color-text-100);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.prose p {
+  line-height: 1.75;
+  margin-bottom: 1.5em;
+  color: var(--color-text-300);
+}
+
+.prose ul li::marker {
+  color: var(--color-brand-gold);
+}

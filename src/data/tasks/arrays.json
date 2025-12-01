@@ -1,0 +1,844 @@
+[
+    {
+        "id": "arrays_intro",
+        "title": "Introduction to Arrays",
+        "description": "Learn what arrays are, why they exist, how indexing works, and how to read data from them.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 What Is an Array?\nA **variable** normally stores ONE value:\n```javascript\nlet color = 'red';\n```\nBut what if we want to store many values? Like a list of colors?\n```javascript\nlet color1 = 'red';\nlet color2 = 'green';\nlet color3 = 'blue';\n```\nThis becomes messy.\n\n### ➜ Arrays solve this problem.\nAn **array** is a special container that stores **multiple values** inside a single variable.\n\n```javascript\nlet colors = ['red', 'green', 'blue'];\n```\nNow *one* variable holds a whole list.\n\nArrays are used everywhere in programming — lists of users, products, scores, messages, results, and more."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 What Can Arrays Store?\nArrays can store **any type of data**:\n```javascript\nlet mix = ['text', 42, true, null, {a:1}, [1,2,3]];\n```\n- strings ✓\n- numbers ✓\n- booleans ✓\n- objects ✓\n- even other arrays! ✓\n\nJavaScript arrays are **flexible**."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Arrays Are Zero-Indexed\nThis is extremely important.\n\nWhen you create an array:\n```javascript\nlet fruits = ['apple', 'banana', 'cherry'];\n```\nJavaScript assigns index numbers automatically:\n```\nIndex:   0        1         2\nValue: 'apple', 'banana', 'cherry'\n```\nTo access a value:\n```javascript\nconsole.log(fruits[0]);  // 'apple'\nconsole.log(fruits[1]);  // 'banana'\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Array Length\nThe number of items in an array is called its **length**.\n```javascript\nlet nums = [10, 20, 30, 40];\nconsole.log(nums.length); // 4\n```\nLength starts from *1*, but indexes start from *0*.\n\nThis confuses beginners — but you'll get used to it!"
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "const animals = ['cat','dog','rabbit'];\nconsole.log(animals[2]); // 'rabbit'\nconsole.log(animals.length); // 3"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Print the second element in the array\nconst cities = ['Paris', 'London', 'Tokyo'];\nconsole.log(/* your code here */);",
+                "instructions": "Print 'London' using array indexing.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "specificStructure",
+                            "nodeType": "MemberExpression",
+                            "description": "Accessing cities[1]",
+                            "properties": {
+                                "object": {
+                                    "name": "cities"
+                                },
+                                "property": {
+                                    "value": 1
+                                }
+                            }
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "London"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Challenge 1: Print the last element\nconst numbers = [5, 10, 15, 20];\n// Your code here",
+                "instructions": "Print the last element using indexing. (Hint: use numbers.length)",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "MemberExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "20"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Challenge 2: Print each element one-by-one (manually)\nconst colors = ['red','green','blue'];\n// Your code here",
+                "instructions": "Print all 3 elements using 3 separate console.log() calls (no loops yet).",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "MemberExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "red",
+                                "green",
+                                "blue"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Why do we use arrays?",
+                "options": [
+                    "To store many values in one variable",
+                    "To store only numbers",
+                    "To repeat code",
+                    "To create loops"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What is the index of the first element in an array?",
+                "options": [
+                    "0",
+                    "1",
+                    "The length of the array",
+                    "Depends on the array"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What does array.length return?",
+                "options": [
+                    "The last index",
+                    "The total number of elements",
+                    "Always 0",
+                    "The first element"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which symbol is used to access array items?",
+                "options": [
+                    "{}",
+                    "()",
+                    "[]",
+                    "<>"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "arrays_basic_operations",
+        "title": "Basic Array Operations",
+        "description": "Learn how to add, remove, replace, and search elements in arrays using essential JavaScript array methods.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 Why Learn Array Operations?\nArrays are only useful if you can **modify** them.\nIn real programs you'll constantly:\n- add new items\n- remove items\n- update items\n- search for items\n\nThis module teaches all of that step-by-step."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Adding Elements\n### 1. `push()` → Add at the **end**\n```javascript\nlet fruits = ['apple', 'banana'];\nfruits.push('cherry');\nconsole.log(fruits); // ['apple', 'banana', 'cherry']\n```\n### 2. `unshift()` → Add at the **start**\n```javascript\nfruits.unshift('mango');\nconsole.log(fruits); // ['mango', 'apple', 'banana', 'cherry']\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Removing Elements\n### 1. `pop()` → Remove from the **end**\n```javascript\nlet letters = ['a','b','c'];\nletters.pop();\nconsole.log(letters); // ['a','b']\n```\n### 2. `shift()` → Remove from the **start**\n```javascript\nletters.shift();\nconsole.log(letters); // ['b']\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Updating (Replacing) Elements by Index\nYou can directly change items:\n```javascript\nlet nums = [10, 20, 30];\nnums[1] = 99;\nconsole.log(nums); // [10, 99, 30]\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Searching Inside Arrays\n### 1. `indexOf(value)` → returns index or -1\n```javascript\nlet colors = ['red','green','blue'];\nconsole.log(colors.indexOf('green')); // 1\nconsole.log(colors.indexOf('purple')); // -1\n```\n### 2. `includes(value)` → true / false\n```javascript\ncolors.includes('blue');  // true\ncolors.includes('black'); // false\n```"
+            },
+            {
+                "type": "snippet",
+                "language": "javascript",
+                "code": "let arr = [1,2,3];\narr.push(4);\narr.shift();\nconsole.log(arr); // [2,3,4]"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Add 'orange' at the end and remove 'apple'\nlet fruits = ['apple', 'banana', 'cherry'];\n// Your code here\nconsole.log(fruits);",
+                "instructions": "Final output should be: ['banana','cherry','orange']",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "methodCall",
+                            "object": "fruits",
+                            "method": "push"
+                        },
+                        {
+                            "type": "methodCall",
+                            "object": "fruits",
+                            "method": "shift"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "[\"banana\",\"cherry\",\"orange\"]"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Challenge 1: Replace the second element with 'X'\nlet arr = [10, 20, 30];\n// Your code here\nconsole.log(arr);",
+                "instructions": "Expected output: [10, 'X', 30]",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "assignment"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "[10,\"X\",30]"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Challenge 2: Check if 'blue' is present\nlet colors = ['red', 'green', 'blue'];\n// Your code here",
+                "instructions": "Print true using includes()",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "methodCall",
+                            "object": "colors",
+                            "method": "includes"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "true"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which method adds an element at the END?",
+                "options": [
+                    "push",
+                    "unshift",
+                    "pop",
+                    "shift"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Which method removes the FIRST element?",
+                "options": [
+                    "push",
+                    "shift",
+                    "pop",
+                    "unshift"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which method checks if a value exists?",
+                "options": [
+                    "indexOf",
+                    "includes",
+                    "length",
+                    "map"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What does indexOf return if value is not found?",
+                "options": [
+                    "null",
+                    "-1",
+                    "undefined",
+                    "0"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "arrays_loops",
+        "title": "Looping Over Arrays",
+        "description": "Learn how to iterate over arrays using `for`, `for...of`, and `forEach` loops to process each element efficiently.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 Why Loops Are Important\nArrays can have many elements. Printing or manipulating each element manually is impractical:\n```javascript\nlet nums = [1,2,3,4,5];\nconsole.log(nums[0]);\nconsole.log(nums[1]);\n// ...\n```\nLoops let us **automate** this process."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Using a `for` Loop\nThe `for` loop uses an index to iterate through array elements:\n```javascript\nconst nums = [10, 20, 30];\nfor(let i = 0; i < nums.length; i++) {\n    console.log(nums[i]);\n}\n```\n- `i = 0` → start index\n- `i < nums.length` → stop condition\n- `i++` → increment index each iteration"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Print squares of each number using for loop\nconst arr = [2,3,4];\n// Your code here",
+                "instructions": "Output each square (line by line): 4, 9, 16",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ForStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "4",
+                                "9",
+                                "16"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Using `for...of` Loop\nThe `for...of` loop lets you iterate **directly over values**:\n```javascript\nconst letters = ['a','b','c'];\nfor(let letter of letters) {\n    console.log(letter);\n}\n```\nNo need for an index."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Print doubled values using for...of loop\nconst nums = [1,2,3,4];\n// Your code here",
+                "instructions": "Output: 2, 4, 6, 8 (line by line)",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ForOfStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "2",
+                                "4",
+                                "6",
+                                "8"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Using `forEach` Method\nArrays have a built-in method `forEach()` to iterate over elements:\n```javascript\nconst items = [5,10,15];\nitems.forEach(function(item){\n    console.log(item);\n});\n```\n- `item` → represents current element in each iteration\n- Works like `for...of` but uses a callback function"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Print squares using forEach\nconst arr = [3,4,5];\n// Your code here",
+                "instructions": "Output each square line by line: 9, 16, 25",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "methodCall",
+                            "object": "arr",
+                            "method": "forEach"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "9",
+                                "16",
+                                "25"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Challenge: Sum all numbers using any loop\nconst numbers = [10,20,30];\nlet sum = 0;\n// Your code here\nconsole.log(sum);",
+                "instructions": "Output: 60",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "anyOf",
+                            "rules": [
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForOfStatement"
+                                },
+                                {
+                                    "type": "methodCall",
+                                    "object": "numbers",
+                                    "method": "forEach"
+                                }
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "60"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which loop iterates directly over values without using an index?",
+                "options": [
+                    "for loop",
+                    "for...of",
+                    "while",
+                    "do...while"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which method executes a function on each array element?",
+                "options": [
+                    "map",
+                    "filter",
+                    "forEach",
+                    "reduce"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "Which property tells how many elements are in an array?",
+                "options": [
+                    "arr.size",
+                    "arr.count",
+                    "arr.length",
+                    "arr.total"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "Which loop is easiest if you need index and value both?",
+                "options": [
+                    "for loop",
+                    "for...of",
+                    "forEach",
+                    "while"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "arrays_multidimensional",
+        "title": "Multi-dimensional Arrays",
+        "description": "Learn how to work with arrays inside arrays, access elements, loop through them, and modify values.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 What Is a Multi-dimensional Array?\nA **multi-dimensional array** is an array of arrays.\n\nExample:\n```javascript\nconst matrix = [\n  [1, 2, 3],\n  [4, 5, 6],\n  [7, 8, 9]\n];\n```\n- `matrix[0]` → `[1,2,3]` (first row)\n- `matrix[1][2]` → `6` (second row, third element)\n\nUse cases: tables, grids, game boards, or any structured data."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Accessing Elements\nAccess a specific element using **row and column indices**:\n```javascript\nconsole.log(matrix[0][0]); // 1\nconsole.log(matrix[2][1]); // 8\n```\nRemember: indexes **start from 0**."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Looping Through a 2D Array\nNested loops allow element-wise iteration:\n```javascript\nfor (let i = 0; i < matrix.length; i++) {\n    for (let j = 0; j < matrix[i].length; j++) {\n        console.log(matrix[i][j]);\n    }\n}\n```\n- Outer loop → rows\n- Inner loop → columns"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Using for...of Loop\nCleaner syntax if you don't need indexes:\n```javascript\nfor (const row of matrix) {\n    for (const value of row) {\n        console.log(value);\n    }\n}\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Modifying Elements\nChange a specific element directly:\n```javascript\nmatrix[1][1] = 55;\nconsole.log(matrix);\n// [[1,2,3],[4,55,6],[7,8,9]]\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Challenge 1: Print all elements of matrix\nconst matrix = [[1,2],[3,4],[5,6]];\n// Your code here",
+                "instructions": "Output each element in a new line: 1 2 3 4 5 6",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "anyOf",
+                            "rules": [
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForOfStatement"
+                                },
+                                {
+                                    "type": "methodCall",
+                                    "object": "matrix",
+                                    "method": "forEach"
+                                }
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Challenge 2: Sum all elements of matrix\nconst matrix = [[1,2],[3,4]];\nlet sum = 0;\n// Your code here\nconsole.log(sum);",
+                "instructions": "Output: 10",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ForOfStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "10"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Challenge 3: Replace a value\nconst matrix = [[5,6],[7,8]];\n// Your code here\nconsole.log(matrix);",
+                "instructions": "Replace 6 with 60. Output: [[5,60],[7,8]]",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "assignment"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "[[5,60],[7,8]]"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "How do you access 5 in [[1,2],[3,4],[5,6]]?",
+                "options": [
+                    "matrix[1][1]",
+                    "matrix[2][0]",
+                    "matrix[0][2]",
+                    "matrix[2][1]"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Multi-dimensional arrays are essentially:",
+                "options": [
+                    "Arrays of strings",
+                    "Arrays of arrays",
+                    "Objects inside arrays",
+                    "Nested objects"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "How do you change the center element of [[1,2],[3,4]] to 99?",
+                "options": [
+                    "matrix[1][1] = 99",
+                    "matrix[0][0] = 99",
+                    "matrix[1] = 99",
+                    "matrix[2][0] = 99"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "arrays_challenges",
+        "title": "Mixed Array Challenges",
+        "description": "Apply all array concepts learned: accessing, looping, modifying, and aggregating elements in practical challenges.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🔹 Challenge 1: Double All Elements\nArray: `[1,2,3,4]`\n- Loop through the array\n- Multiply each element by 2\n- Print each doubled value on a new line\n\nExpected output:\n```\n2\n4\n6\n8\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const arr = [1,2,3,4];\n// Your code here",
+                "instructions": "Print doubled values of each element using any loop.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "anyOf",
+                            "rules": [
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForOfStatement"
+                                },
+                                {
+                                    "type": "methodCall",
+                                    "object": "arr",
+                                    "method": "forEach"
+                                }
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "2",
+                                "4",
+                                "6",
+                                "8"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Challenge 2: Sum of Array Elements\nArray: `[10,20,30]`\n- Initialize sum = 0\n- Loop through each element and add to sum\n- Print final sum\n\nExpected output: `60`"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const arr = [10,20,30];\nlet sum = 0;\n// Your code here\nconsole.log(sum);",
+                "instructions": "Calculate sum using a loop.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ForStatement"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "60"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Challenge 3: Flatten and Print Multi-dimensional Array\nArray: `[[1,2],[3,4]]`\n- Loop through rows and columns\n- Print each element on a new line\n\nExpected output:\n```\n1\n2\n3\n4\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const matrix = [[1,2],[3,4]];\n// Your code here",
+                "instructions": "Print each element using nested loops or forEach.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "anyOf",
+                            "rules": [
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForOfStatement"
+                                },
+                                {
+                                    "type": "methodCall",
+                                    "object": "matrix",
+                                    "method": "forEach"
+                                }
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "1",
+                                "2",
+                                "3",
+                                "4"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Challenge 4: Filter and Modify Array\nArray: `[5,10,15,20]`\n- Remove elements less than 15\n- Multiply remaining elements by 2\n- Print each result\n\nExpected output:\n```\n30\n40\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "let arr = [5,10,15,20];\n// Your code here",
+                "instructions": "Use loops and conditional statements to modify and print values.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "anyOf",
+                            "rules": [
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForStatement"
+                                },
+                                {
+                                    "type": "structure",
+                                    "nodeType": "ForOfStatement"
+                                }
+                            ]
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "30",
+                                "40"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which loop is easiest to use for directly accessing array values?",
+                "options": [
+                    "for loop",
+                    "for...of",
+                    "while",
+                    "do...while"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which method executes a function on each array element?",
+                "options": [
+                    "map",
+                    "forEach",
+                    "filter",
+                    "reduce"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which method adds an element at the START of an array?",
+                "options": [
+                    "push",
+                    "pop",
+                    "shift",
+                    "unshift"
+                ],
+                "answerIndex": 3
+            },
+            {
+                "question": "Arrays are zero-indexed. What does this mean?",
+                "options": [
+                    "First element has index 0",
+                    "Last element has index 0",
+                    "Indexes start from 1",
+                    "Only numeric arrays start at 0"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    }
+]
