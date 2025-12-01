@@ -15,7 +15,7 @@ export function Home() {
                     </div>
                     <h1 className="text-5xl sm:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 tracking-tight animate-in fade-in slide-in-from-bottom-6 duration-700">
                         Level Up Your <br />
-                        <span className="text-indigo-400">Coding Skills</span>
+                        <span className="text-indigo-400">JavaScript Skills</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
                         Learn by doing. Interactive lessons, instant feedback, and bite-sized challenges to help you master JavaScript.
