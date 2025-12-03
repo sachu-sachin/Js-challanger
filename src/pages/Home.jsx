@@ -27,11 +27,11 @@ export function Home() {
                                     Stop watching tutorials. Start writing code. Interactive lessons, visualizers, and bite-sized challenges to help you master JavaScript.
                                 </p>
                                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-200">
-                                    <Link to="/topic/variables" className="w-full sm:w-auto px-8 py-4 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-bold rounded-xl transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                                    <Link to="/topic/variables" className="w-full sm:w-auto px-8 py-4 bg-[#D4AF37] hover:bg-yellow-500 text-slate-900 font-bold rounded-xl transition-all transform hover:scale-105 flex items-center justify-center gap-2">
                                         Start Learning <ArrowRight size={20} />
                                     </Link>
-                                    <Link to="/visualizer" className="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-2 group">
-                                        <Play size={20} className="group-hover:text-brand-gold transition-colors" />
+                                    <Link to="/visualizer/memory" className="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-2 group">
+                                        <Play size={20} className="group-hover:text-[#D4AF37] transition-colors" />
                                         Try Visualizers
                                     </Link>
                                 </div>
@@ -117,7 +117,7 @@ export function Home() {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                             {/* Main Feature - Memory */}
-                            <Link to="/visualizer" className="md:col-span-2 group relative overflow-hidden rounded-3xl bg-slate-800 border border-slate-700 p-8 hover:border-brand-gold/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/10">
+                            <Link to="/visualizer/memory" className="md:col-span-2 group relative overflow-hidden rounded-3xl bg-slate-800 border border-slate-700 p-8 hover:border-brand-gold/50 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/10">
                                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                                     <Zap className="w-64 h-64 text-brand-gold" />
                                 </div>
