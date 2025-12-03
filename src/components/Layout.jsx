@@ -8,8 +8,8 @@ export function Layout({ children }) {
                     <span className="text-2xl">⚡</span> <span className="hidden sm:inline">JS Challenger</span>
                 </Link>
                 <nav className="flex gap-6">
-                    <Link to="/" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Topics</Link>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">GitHub</a>
+                    <Link to="/topic/variables" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Topics</Link>
+                    <a href="https://github.com/sachu-sachin/Js-challanger.git" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">GitHub</a>
                 </nav>
             </header>
             <main className="flex-1 flex flex-col relative">
