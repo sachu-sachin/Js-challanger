@@ -1,17 +1,45 @@
 [
     {
         "id": "objects_intro",
-        "title": "Introduction to Objects",
-        "description": "Learn what objects are and how to store structured data using key-value pairs.",
+        "title": "Why Objects Exist & What They Solve",
+        "description": "Understand why JavaScript uses objects, what problems they solve, and when to use them.",
         "steps": [
             {
                 "type": "theory",
-                "content": "## 🔹 What Is an Object?\nAn **object** is a collection of related data.\n\nWhile an array stores a list `['red', 'blue']`, an object stores data with **labels** (keys).\n\n```javascript\nconst car = {\n    brand: 'Tesla',\n    model: 'Model 3',\n    year: 2023\n};\n```\nHere, `brand`, `model`, and `year` are **keys**, and `'Tesla'`, `'Model 3'`, `2023` are **values**."
+                "content": "## 🎯 Goal\nUnderstand **why** JavaScript uses objects, not just what they look like."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 1. Why Do We Need Objects?\nBeginners often ask:\n\n❓ *“Why not use arrays for everything?”*\n\nBecause arrays store **ordered lists** like:\n```javascript\n['Alice', 25]\n```\nBut what do these numbers mean?\n- Is 25 an age?\n- A score?\n- A level?\n\n➡️ Objects add **meaning** to data using key–value pairs."
+            },
+            {
+                "type": "theory",
+                "content": "Objects add labels to data:\n```javascript\n{ name: 'Alice', age: 25 }\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. What Exactly Is an Object?\nAn object is a **container** that stores labeled information.\n\nSyntax:\n```javascript\nconst objectName = {\n    key1: value1,\n    key2: value2\n};\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## Why this syntax?\n- `{}` = object literal (the easiest way to create objects)\n- `key: value` = tells JavaScript what the information represents\n- `const` = prevents accidental reassignment of the whole object"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. When Should You Use Objects?\nUse an **object** when:\n- You have **named pieces of data**\n- Order **does not matter**\n- You want to store **properties about a single thing**"
+            },
+            {
+                "type": "theory",
+                "content": "### Examples of good object use:\n- A user\n- A product\n- A car\n- Settings/preferences\n- API responses"
+            },
+            {
+                "type": "theory",
+                "content": "### When to use an array instead:\nUse an **array** when:\n- Order matters\n- You have a list of similar things\n\nExample:\nA list of users → an **array of objects**"
             },
             {
                 "type": "editor",
-                "startingCode": "// Create an object named 'person'\n// It should have name: 'Alice' and age: 25\n\nconst person = // Your code here\nconsole.log(person);",
-                "instructions": "Define the person object.",
+                "startingCode": "// Create an object named 'person'\n// It should have name: 'Alice' and age: 25\n\nconst person = // your code here\nconsole.log(person);",
+                "instructions": "Create your first object using key-value pairs.",
                 "validate": {
                     "requirements": [
                         {
@@ -32,7 +60,7 @@
                         {
                             "input": [],
                             "output": [
-                                "{ name: 'Alice', age: 25 }"
+                                "{name:\"Alice\",age:25}"
                             ]
                         }
                     ]
@@ -41,7 +69,17 @@
         ],
         "quiz": [
             {
-                "question": "What syntax is used to create an object?",
+                "question": "What problem do objects solve that arrays can't?",
+                "options": [
+                    "They store values in order",
+                    "They allow labeling data with meaning",
+                    "They are faster than arrays",
+                    "They replace functions"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which syntax creates an object?",
                 "options": [
                     "[]",
                     "{}",
@@ -51,34 +89,163 @@
                 "answerIndex": 1
             },
             {
-                "question": "In { a: 1 }, 'a' is called the:",
+                "question": "In { name: 'Alice' }, what is 'name'?",
                 "options": [
-                    "Index",
-                    "Key",
-                    "Value",
-                    "Type"
+                    "A value",
+                    "A key",
+                    "An index",
+                    "A method"
                 ],
                 "answerIndex": 1
             }
         ]
     },
     {
-        "id": "objects_access",
-        "title": "Accessing & Modifying",
-        "description": "Learn how to read and change values inside an object.",
+        "id": "objects_creating_structuring",
+        "title": "Creating & Structuring Objects",
+        "description": "Learn how to create objects, rules for keys, and what kinds of data objects can store.",
         "steps": [
             {
                 "type": "theory",
-                "content": "## 🔹 Accessing Properties\nThere are two ways to access data:\n\n### 1. Dot Notation (Most Common)\n```javascript\nconsole.log(car.brand); // 'Tesla'\n```\n\n### 2. Bracket Notation\nUseful if the key has spaces or is stored in a variable.\n```javascript\nconsole.log(car['model']); // 'Model 3'\n```"
+                "content": "## 🎯 Goal\nLearn how to create objects, understand rules for keys, and explore what types of values objects can hold."
             },
             {
                 "type": "theory",
-                "content": "## 🔹 Modifying Properties\nYou can change values or add new ones:\n```javascript\ncar.year = 2024; // Update\ncar.color = 'Red'; // Add new\n```"
+                "content": "## 🔹 1. Creating an Object (Object Literal)\nThe simplest and most common way to create an object is using an **object literal**."
+            },
+            {
+                "type": "theory",
+                "content": "Example:\n```javascript\nconst person = {\n    name: 'Alice',\n    age: 25\n};\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. Rules for Keys\nKeys must follow certain rules:\n- Usually strings\n- Must be unique inside the object\n- Don't require quotes **if** the key is a valid identifier"
+            },
+            {
+                "type": "theory",
+                "content": "Valid key without quotes:\n✔️ `name`\n\nKey that needs quotes:\n❌ `\"first name\"` (because it contains a space)"
+            },
+            {
+                "type": "theory",
+                "content": "Both styles work:\n```javascript\nconst obj = {\n    \"first name\": \"John\",\n    age: 20\n};\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. Types of Values You Can Store\nObjects can contain many different kinds of values:"
+            },
+            {
+                "type": "theory",
+                "content": "- strings\n- numbers\n- booleans\n- arrays\n- other objects\n- functions (methods)"
+            },
+            {
+                "type": "theory",
+                "content": "Example showing all types:\n```javascript\nconst product = {\n    title: \"Laptop\",\n    price: 999,\n    available: true,\n    tags: [\"tech\", \"electronics\"],\n    details: {\n        weight: 1.5,\n        color: \"silver\"\n    }\n};\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Create an object named 'car'\n// It should have: brand: 'Toyota', year: 2020\n\nconst car = // your code here\nconsole.log(car);",
+                "instructions": "Create an object using the object literal syntax.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "noHardcodedConsole"
+                        },
+                        {
+                            "type": "structure",
+                            "nodeType": "ObjectExpression"
+                        },
+                        {
+                            "type": "specificStructure",
+                            "nodeType": "Property",
+                            "key": "brand",
+                            "value": "Toyota"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "{ brand: 'Toyota', year: 2020 }"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "quiz": [
+            {
+                "question": "Which syntax creates an object?",
+                "options": [
+                    "[]",
+                    "{}",
+                    "()",
+                    "<>"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which of the following can be stored inside an object?",
+                "options": [
+                    "Only strings",
+                    "Only numbers",
+                    "Only arrays",
+                    "Any data type including functions"
+                ],
+                "answerIndex": 3
+            },
+            {
+                "question": "Which key requires quotes?",
+                "options": [
+                    "name",
+                    "age",
+                    "first name",
+                    "title"
+                ],
+                "answerIndex": 2
+            }
+        ]
+    },
+    {
+        "id": "objects_access_modify",
+        "title": "Accessing & Modifying Object Properties",
+        "description": "Learn how to read values from an object and how to update or add new properties.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🎯 Goal\nLearn how to access, read, update, and add properties inside an object."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 1. Accessing Properties\nThere are two ways to access values from an object."
+            },
+            {
+                "type": "theory",
+                "content": "### Dot Notation (most common)\nThis is used when the key is simple and known.\n```javascript\nconst car = { brand: 'Tesla', model: 'Model 3' };\nconsole.log(car.brand); // 'Tesla'\n```"
+            },
+            {
+                "type": "theory",
+                "content": "### Bracket Notation\nUsed when the key has spaces or comes from a variable.\n```javascript\nconst car = { brand: 'Tesla', model: 'Model 3' };\nconsole.log(car['model']); // 'Model 3'\n```"
+            },
+            {
+                "type": "theory",
+                "content": "Bracket notation also allows dynamic keys:\n```javascript\nconst key = 'brand';\nconsole.log(car[key]); // 'Tesla'\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. Modifying Existing Properties\nYou can change values anytime.\n```javascript\nconst user = { name: 'Bob', role: 'Guest' };\nuser.role = 'Admin';\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. Adding New Properties\nObjects grow naturally.\n```javascript\nuser.active = true;\n```"
+            },
+            {
+                "type": "theory",
+                "content": "After updating:\n```javascript\n{ name: 'Bob', role: 'Admin', active: true }\n```"
             },
             {
                 "type": "editor",
                 "startingCode": "const user = {\n    name: 'Bob',\n    role: 'Guest'\n};\n\n// 1. Change role to 'Admin'\n// 2. Add a new property 'active' with value true\n\nconsole.log(user);",
-                "instructions": "Update the user object as requested.",
+                "instructions": "Modify the user object by updating and adding properties.",
                 "validate": {
                     "requirements": [
                         {
@@ -109,29 +276,156 @@
                     "Dot notation (.)",
                     "Bracket notation ([])",
                     "Arrow notation (->)",
-                    "None"
+                    "Slash notation (/)"
                 ],
                 "answerIndex": 1
+            },
+            {
+                "question": "What happens if you assign a new property to an object?",
+                "options": [
+                    "JavaScript throws an error",
+                    "The object expands and stores it",
+                    "The property replaces the object",
+                    "You cannot add new properties"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What does dot notation access in `user.name`?",
+                "options": [
+                    "A function",
+                    "A key",
+                    "The value stored under the key 'name'",
+                    "The whole object"
+                ],
+                "answerIndex": 2
             }
         ]
     },
     {
         "id": "objects_methods",
-        "title": "Object Methods",
-        "description": "Learn how to add functions inside objects.",
+        "title": "Object Methods & The 'this' Keyword",
+        "description": "Learn how to add functions inside objects, use methods, and understand how 'this' refers to the object.",
         "steps": [
             {
                 "type": "theory",
-                "content": "## 🔹 Methods\nA function stored inside an object is called a **method**.\n\n```javascript\nconst dog = {\n    name: 'Rex',\n    bark: function() {\n        console.log('Woof!');\n    }\n};\n\ndog.bark(); // Prints: Woof!\n```"
+                "content": "## 🎯 Goal\nUnderstand what methods are, why objects use functions, and how the `this` keyword lets methods access other properties."
             },
             {
                 "type": "theory",
-                "content": "## 🔹 The 'this' Keyword\nTo access other properties inside the same object, use `this`.\n```javascript\nconst person = {\n    name: 'Alice',\n    greet: function() {\n        console.log('Hello, I am ' + this.name);\n    }\n};\n\nperson.greet(); // Hello, I am Alice\n```"
+                "content": "## 🔹 1. What Is a Method?\nA **method** is simply a function stored inside an object."
+            },
+            {
+                "type": "theory",
+                "content": "Example:\n```javascript\nconst user = {\n  sayHi: function() {\n    console.log('Hi!');\n  }\n};\n```"
+            },
+            {
+                "type": "theory",
+                "content": "Why methods? They give objects **behavior**, not just data."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #1\nCreate an object with a method:\n- object name: `pet`\n- method name: `speak`\n- it should print: `I am a pet!`"
             },
             {
                 "type": "editor",
-                "startingCode": "const calculator = {\n    value: 10,\n    double: function() {\n        // Return this.value * 2\n    }\n};\n\nconsole.log(calculator.double());",
-                "instructions": "Complete the 'double' method to return value * 2.",
+                "startingCode": "// Create the 'pet' object with a speak() method\n\n// your code here\n",
+                "instructions": "Create the method as described.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "ObjectExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "I am a pet!"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. Shorter Method Syntax\nModern JavaScript lets you write methods more cleanly:\n```javascript\nconst dog = {\n  bark() {\n    console.log('Woof!');\n  }\n};\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 Why Use Short Method Syntax?\n- Less typing\n- Cleaner objects\n- Same behavior"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #2\nRewrite this using short method syntax:\n```javascript\nconst robot = {\n  greet: function() {\n    console.log('Beep');\n  }\n};\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const robot = {\n  // rewrite greet using short syntax\n};\n\nconsole.log(robot.greet());",
+                "instructions": "Rewrite the method to use short syntax.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "Property"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "Beep"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. The `this` Keyword\n`this` refers to **the object that owns the method**."
+            },
+            {
+                "type": "theory",
+                "content": "Example:\n```javascript\nconst person = {\n  name: 'Alice',\n  introduce() {\n    console.log('My name is ' + this.name);\n  }\n};\n```"
+            },
+            {
+                "type": "theory",
+                "content": "Why use `this`?\n- The object name might change\n- Methods need a reliable way to access the object's own data"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #3\nFix this code so it prints the name using `this`:\n```javascript\nconst hero = {\n  name: 'Flash',\n  run: function() {\n    console.log('I am ' + name);\n  }\n};\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const hero = {\n  name: 'Flash',\n  run: function() {\n    // fix here\n  }\n};\n\nhero.run();",
+                "instructions": "Use `this.name` correctly.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "ThisExpression"
+                        }
+                    ],
+                    "tests": [
+                        {
+                            "input": [],
+                            "output": [
+                                "I am Flash"
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 4. Putting It All Together\nA method using `this` and returning a value:\n```javascript\nconst calculator = {\n  value: 10,\n  double() {\n    return this.value * 2;\n  }\n};\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const calculator = {\n    value: 10,\n    double: function() {\n        // return this.value * 2\n    }\n};\n\nconsole.log(calculator.double());",
+                "instructions": "Complete the method to return double the value.",
                 "validate": {
                     "requirements": [
                         {
@@ -155,45 +449,113 @@
         ],
         "quiz": [
             {
-                "question": "What is a function inside an object called?",
+                "question": "What is a method?",
                 "options": [
-                    "Variable",
-                    "Method",
-                    "Key",
-                    "Element"
+                    "A variable stored in an object",
+                    "A function stored inside an object",
+                    "A key inside an array",
+                    "A class inside an object"
                 ],
                 "answerIndex": 1
             },
             {
-                "question": "What keyword refers to the current object?",
+                "question": "What does `this` refer to inside a method?",
                 "options": [
-                    "self",
-                    "it",
-                    "this",
-                    "object"
+                    "The window/global object",
+                    "The last object created",
+                    "The object that owns the method",
+                    "A random function"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "Which of the following is short method syntax?",
+                "options": [
+                    "greet: function() {}",
+                    "greet() {}",
+                    "function greet() {}",
+                    "method: greet"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Why is `this` useful in methods?",
+                "options": [
+                    "It makes code run faster",
+                    "It allows methods to access the object's own data",
+                    "It replaces variable declarations",
+                    "It is required in every function"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What will this display?\n```javascript\nconst cat = {\n  sound: 'Meow',\n  speak() {\n    return this.sound;\n  }\n};\nconsole.log(cat.speak());\n```",
+                "options": [
+                    "undefined",
+                    "error",
+                    "Meow",
+                    "null"
                 ],
                 "answerIndex": 2
             }
         ]
     },
     {
-        "id": "objects_challenges",
-        "title": "Mixed Object Challenges",
-        "description": "Practice working with objects, arrays of objects, and complex data structures.",
+        "id": "objects_loops",
+        "title": "Objects, Loops & Arrays of Objects",
+        "description": "Learn how to loop over objects, work with arrays of objects, and extract or transform data.",
         "steps": [
             {
                 "type": "theory",
-                "content": "## 🔹 Challenge 1: Array of Objects\nYou can store objects inside an array.\n```javascript\nconst users = [\n    { id: 1, name: 'A' },\n    { id: 2, name: 'B' }\n];\n```"
+                "content": "## 🎯 Goal\nLearn how to loop through object properties, handle arrays of objects, and access nested structures."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 1. Why Loop Through Objects?\nObjects often contain multiple properties, and sometimes you need to:\n- print all key/value pairs\n- validate data\n- transform data\n- search for info\nLoops let you inspect each property automatically."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. Looping With `for...in`\n`for...in` loops through **keys** of an object.\n```javascript\nconst car = { brand: 'Tesla', year: 2023 };\nfor (let key in car) {\n  console.log(key); // 'brand', 'year'\n}\n```"
+            },
+            {
+                "type": "theory",
+                "content": "Accessing values inside `for...in`:\n```javascript\nfor (let key in car) {\n  console.log(car[key]);\n}\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #1\nPrint all properties:\n```javascript\nconst user = { name: 'Bob', age: 30, active: true };\n```\nExpected:\n```\nname\nage\nactive\n```"
             },
             {
                 "type": "editor",
-                "startingCode": "const products = [\n    { name: 'Laptop', price: 1000 },\n    { name: 'Mouse', price: 20 }\n];\n\n// Loop through products and print each name\n// Your code here",
-                "instructions": "Print 'Laptop' and 'Mouse' on separate lines.",
+                "startingCode": "const user = { name: 'Bob', age: 30, active: true };\n\n// loop and print keys\n// your code here",
+                "instructions": "Loop with for...in and print each key.",
                 "validate": {
                     "requirements": [
                         {
-                            "type": "noHardcodedConsole"
-                        },
+                            "type": "structure",
+                            "nodeType": "ForInStatement"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. Arrays of Objects\nArrays store lists.\nObjects store structured data.\nTogether → perfect for real-world data.\n\nExample:\n```javascript\nconst products = [\n  { name: 'Laptop', price: 1000 },\n  { name: 'Mouse', price: 20 }\n];\n```"
+            },
+            {
+                "type": "theory",
+                "content": "Accessing each object:\n```javascript\nfor (const item of products) {\n  console.log(item.name);\n}\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #2\nUsing the `products` array above, print:\n```\nLaptop\nMouse\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const products = [\n  { name: 'Laptop', price: 1000 },\n  { name: 'Mouse', price: 20 }\n];\n\n// print names using for...of, for, or forEach\n// your code here",
+                "instructions": "Loop through the array and print each product name.",
+                "validate": {
+                    "requirements": [
                         {
                             "type": "anyOf",
                             "rules": [
@@ -211,42 +573,51 @@
                                 }
                             ]
                         }
-                    ],
-                    "tests": [
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 4. Nested Objects\nObjects can contain other objects.\n```javascript\nconst student = {\n  name: 'John',\n  grades: { math: 90, science: 85 }\n};\n```"
+            },
+            {
+                "type": "theory",
+                "content": "Access nested values:\n```javascript\nconsole.log(student.grades.math);\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #3\nPrint the math grade (90)."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const student = {\n  name: 'John',\n  grades: { math: 90, science: 85 }\n};\n\n// print math grade\n// your code here",
+                "instructions": "Access and print student.grades.math.",
+                "validate": {
+                    "requirements": [
                         {
-                            "input": [],
-                            "output": [
-                                "Laptop",
-                                "Mouse"
-                            ]
+                            "type": "structure",
+                            "nodeType": "MemberExpression"
                         }
                     ]
                 }
             },
             {
                 "type": "theory",
-                "content": "## 🔹 Challenge 2: Nested Objects\nObjects can contain other objects.\n```javascript\nconst user = {\n    name: 'Sam',\n    address: {\n        city: 'New York',\n        zip: 10001\n    }\n};\nconsole.log(user.address.city);\n```"
+                "content": "## 🔹 5. Transforming Arrays of Objects\nSometimes you need only a list of values.\nExample: extract all product names.\n```javascript\nconst names = products.map(item => item.name);\nconsole.log(names); // ['Laptop', 'Mouse']\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #4\nGiven:\n```javascript\nconst users = [\n  { name: 'Sam', age: 21 },\n  { name: 'Tara', age: 30 }\n];\n```\nUse `.map()` to return:\n```\n['Sam', 'Tara']\n```"
             },
             {
                 "type": "editor",
-                "startingCode": "const student = {\n    name: 'John',\n    grades: {\n        math: 90,\n        science: 85\n    }\n};\n\n// Print the math grade",
-                "instructions": "Access and print the math grade (90).",
+                "startingCode": "const users = [\n  { name: 'Sam', age: 21 },\n  { name: 'Tara', age: 30 }\n];\n\n// return array of names\n// your code here",
+                "instructions": "Use .map() to extract user names.",
                 "validate": {
                     "requirements": [
                         {
-                            "type": "noHardcodedConsole"
-                        },
-                        {
-                            "type": "structure",
-                            "nodeType": "MemberExpression"
-                        }
-                    ],
-                    "tests": [
-                        {
-                            "input": [],
-                            "output": [
-                                "90"
-                            ]
+                            "type": "methodCall",
+                            "method": "map"
                         }
                     ]
                 }
@@ -254,12 +625,593 @@
         ],
         "quiz": [
             {
-                "question": "How do you access 'city' in { loc: { city: 'LA' } }?",
+                "question": "Which loop lets you iterate over object KEYS?",
                 "options": [
-                    "loc.city",
-                    "loc[city]",
-                    "city.loc",
-                    "loc->city"
+                    "for...in",
+                    "for...of",
+                    "while",
+                    "forEach"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Which loop is best for arrays of objects?",
+                "options": [
+                    "for...in",
+                    "for...of",
+                    "object.loop()",
+                    "loop array()"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What does `map()` return?",
+                "options": [
+                    "A modified object",
+                    "A new array",
+                    "Nothing",
+                    "A number"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "How do you access the value 90 in: `{ grades: { math: 90 } }`?",
+                "options": [
+                    "grades.math",
+                    "math.grades",
+                    "grades->math",
+                    "grades(math)"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What will this print?\n```javascript\nconst items = [{ x: 1 }, { x: 2 }];\nconsole.log(items.map(i => i.x));\n```",
+                "options": [
+                    "[1, 2]",
+                    "12",
+                    "undefined",
+                    "error"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Which returns ONLY the keys of an object?",
+                "options": [
+                    "Object.values(obj)",
+                    "Object.keys(obj)",
+                    "Object.all(obj)",
+                    "obj.getKeys()"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "objects_destructuring",
+        "title": "Object Destructuring",
+        "description": "Learn how to extract values from objects easily using destructuring, including nested objects and default values.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🎯 Goal\nUnderstand how to quickly extract values from objects into variables using destructuring."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 1. Basic Destructuring\nYou can extract properties from an object into variables.\n```javascript\nconst user = { name: 'Alice', age: 25 };\nconst { name, age } = user;\nconsole.log(name); // Alice\nconsole.log(age);  // 25\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #1\nGiven:\n```javascript\nconst car = { brand: 'Tesla', model: 'Model 3' };\n```\nDestructure `brand` and `model` into variables and print them."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand: 'Tesla', model: 'Model 3' };\n\n// destructure brand and model\n// print them\n",
+                "instructions": "Destructure and log brand and model.",
+                "validate": {
+                    "requirements": [
+                        {
+                            "type": "structure",
+                            "nodeType": "VariableDeclarator"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. Default Values\nIf a property might not exist, you can give a default value.\n```javascript\nconst user = { name: 'Bob' };\nconst { name, age = 30 } = user;\nconsole.log(age); // 30\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #2\nDestructure `name` and `active` from:\n```javascript\nconst user = { name: 'Sam' };\n```\nSet default value for `active` as `true` and print both."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const user = { name: 'Sam' };\n\n// destructure name and active with default\n// print both\n",
+                "instructions": "Use destructuring with default values."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. Renaming Variables\nYou can rename variables while destructuring.\n```javascript\nconst user = { name: 'Alice', age: 25 };\nconst { name: username, age: years } = user;\nconsole.log(username); // Alice\nconsole.log(years);    // 25\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #3\nDestructure `{ brand, model }` from `car` but rename them to `make` and `type`."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand: 'Tesla', model: 'Model 3' };\n\n// destructure with renaming\n// print make and type\n",
+                "instructions": "Destructure and rename the variables."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 4. Nested Object Destructuring\nYou can destructure nested objects directly.\n```javascript\nconst student = { name: 'John', grades: { math: 90, science: 85 } };\nconst { grades: { math, science } } = student;\nconsole.log(math);    // 90\nconsole.log(science); // 85\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #4\nDestructure the `city` and `zip` from:\n```javascript\nconst user = { name: 'Tara', address: { city: 'LA', zip: 90001 } };\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const user = { name: 'Tara', address: { city: 'LA', zip: 90001 } };\n\n// destructure city and zip\n// print them\n",
+                "instructions": "Use nested destructuring."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 5. Destructuring in Function Parameters\nYou can destructure directly in function parameters.\n```javascript\nfunction greet({ name, age }) {\n  console.log(`Hello, ${name}. Age: ${age}`);\n}\nconst user = { name: 'Alice', age: 25 };\ngreet(user); // Hello, Alice. Age: 25\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "function showProduct({ name, price }) {\n    // print name and price\n}\nconst product = { name: 'Laptop', price: 1000 };\n\n// call function\n",
+                "instructions": "Destructure inside function parameters and print values."
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does object destructuring do?",
+                "options": [
+                    "Extracts values into variables",
+                    "Creates a copy of object",
+                    "Deletes properties",
+                    "Converts object to array"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "How do you set a default value when destructuring?",
+                "options": [
+                    "{ prop = defaultValue }",
+                    "{ prop ?: defaultValue }",
+                    "{ prop ? defaultValue }",
+                    "{ defaultValue = prop }"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "How do you rename a variable while destructuring?",
+                "options": [
+                    "{ key: newName }",
+                    "{ key -> newName }",
+                    "{ key = newName }",
+                    "{ key ~ newName }"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Which allows nested destructuring?",
+                "options": [
+                    "{ a: { b, c } } = obj",
+                    "{ a.b, a.c } = obj",
+                    "{ b, c } = obj.a",
+                    "Both 1 and 3"
+                ],
+                "answerIndex": 3
+            },
+            {
+                "question": "You can destructure directly in:",
+                "options": [
+                    "Function parameters",
+                    "Loops only",
+                    "Array.map() only",
+                    "Cannot destructure in functions"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What will this print?\n```javascript\nconst obj = { x: 5 };\nconst { x = 10, y = 20 } = obj;\nconsole.log(x, y);\n```",
+                "options": [
+                    "5 20",
+                    "10 20",
+                    "5 undefined",
+                    "undefined 20"
+                ],
+                "answerIndex": 0
+            }
+        ]
+    },
+    {
+        "id": "objects_spread_rest",
+        "title": "Object Spread, Rest & Cloning",
+        "description": "Learn how to copy objects, merge them, extract remaining properties, and avoid accidental mutation.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🎯 Goal\nUnderstand how to use spread syntax to clone and merge objects, and rest syntax to extract remaining properties."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 1. Object Cloning\nObjects are reference types. Assigning one object to another does not create a copy.\n```javascript\nconst original = { a: 1, b: 2 };\nconst copy = original;\ncopy.a = 99;\nconsole.log(original.a); // 99 (both change)\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. Using Spread to Clone\nSpread syntax creates a shallow copy.\n```javascript\nconst original = { a: 1, b: 2 };\nconst copy = { ...original };\ncopy.a = 99;\nconsole.log(original.a); // 1 (original unchanged)\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #1\nClone this object using spread and update `age` to 30:\n```javascript\nconst person = { name: 'Alice', age: 25 };\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const person = { name: 'Alice', age: 25 };\n\n// clone and update age to 30\nconst updatedPerson = \n\nconsole.log(updatedPerson);",
+                "instructions": "Use spread syntax to create a new object and update age."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. Merging Objects\nSpread also merges objects:\n```javascript\nconst defaults = { active: true, role: 'Guest' };\nconst user = { name: 'Bob', role: 'Admin' };\nconst merged = { ...defaults, ...user };\nconsole.log(merged); // { active: true, role: 'Admin', name: 'Bob' }\n```"
+            },
+            {
+                "type": "theory",
+                "content": "Order matters: properties in later objects overwrite earlier ones."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #2\nMerge two objects:\n```javascript\nconst settings = { theme: 'light', notifications: true };\nconst userPrefs = { theme: 'dark' };\n```\nResult should be:\n```\n{ theme: 'dark', notifications: true }\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const settings = { theme: 'light', notifications: true };\nconst userPrefs = { theme: 'dark' };\n\nconst mergedSettings = \n\nconsole.log(mergedSettings);",
+                "instructions": "Merge using spread syntax so userPrefs overwrite settings."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 4. Rest Syntax\nRest syntax collects remaining properties into a new object.\n```javascript\nconst user = { name: 'Alice', age: 25, role: 'Admin' };\nconst { name, ...rest } = user;\nconsole.log(name); // Alice\nconsole.log(rest); // { age: 25, role: 'Admin' }\n```"
+            },
+            {
+                "type": "theory",
+                "content": "Rest is useful when you want some properties separately and keep the rest together."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #3\nExtract `name` and store remaining properties in `details` from:\n```javascript\nconst person = { name: 'Bob', age: 30, active: true };\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const person = { name: 'Bob', age: 30, active: true };\n\n// destructure name and rest\nconst { name, ...details } = \n\nconsole.log(name);\nconsole.log(details);",
+                "instructions": "Use rest syntax to separate name and the remaining properties."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 5. Shallow Copy Warning\nSpread creates a shallow copy. Nested objects are still references.\n```javascript\nconst obj = { a: 1, nested: { b: 2 } };\nconst copy = { ...obj };\ncopy.nested.b = 99;\nconsole.log(obj.nested.b); // 99 (nested object changed)\n```"
+            },
+            {
+                "type": "theory",
+                "content": "For deep cloning, you need `structuredClone()` or libraries like lodash."
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does `{ ...obj }` do?",
+                "options": [
+                    "Deletes properties",
+                    "Creates a shallow copy",
+                    "Converts object to array",
+                    "Merges two arrays"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What happens when you merge objects with spread?",
+                "options": [
+                    "Later properties overwrite earlier ones",
+                    "Earlier properties overwrite later ones",
+                    "It throws an error",
+                    "All keys are duplicated"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What does rest syntax do?",
+                "options": [
+                    "Collects remaining properties into a new object",
+                    "Deletes the remaining properties",
+                    "Copies values into an array",
+                    "Converts object to JSON"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "Does spread create a deep copy?",
+                "options": [
+                    "Yes",
+                    "No, shallow copy only",
+                    "Sometimes",
+                    "Only for arrays"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What will this print?\n```javascript\nconst obj = { a: 1, b: { c: 2 } };\nconst copy = { ...obj };\ncopy.b.c = 99;\nconsole.log(obj.b.c);\n```",
+                "options": [
+                    "2",
+                    "99",
+                    "undefined",
+                    "error"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "objects_keys_values_entries",
+        "title": "Object.keys, Object.values, Object.entries & Iteration",
+        "description": "Learn how to extract keys, values, and key-value pairs from objects and loop over them efficiently.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🎯 Goal\nUnderstand how to use Object.keys, Object.values, and Object.entries to iterate over objects efficiently."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 1. Object.keys()\n`Object.keys(obj)` returns an array of all keys in the object.\n```javascript\nconst user = { name: 'Alice', age: 25, active: true };\nconsole.log(Object.keys(user));\n// ['name', 'age', 'active']\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #1\nGiven:\n```javascript\nconst car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\n```\nUse Object.keys to print all keys."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\n\n// print keys\n// your code here",
+                "instructions": "Use Object.keys and loop over it to print each key."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. Object.values()\n`Object.values(obj)` returns an array of all values.\n```javascript\nconst user = { name: 'Alice', age: 25, active: true };\nconsole.log(Object.values(user));\n// ['Alice', 25, true]\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #2\nPrint all values of the `car` object using Object.values."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\n\n// print values\n// your code here",
+                "instructions": "Use Object.values to print each value."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. Object.entries()\n`Object.entries(obj)` returns an array of [key, value] pairs.\n```javascript\nconst user = { name: 'Alice', age: 25 };\nconsole.log(Object.entries(user));\n// [['name', 'Alice'], ['age', 25]]\n```"
+            },
+            {
+                "type": "theory",
+                "content": "You can loop over entries using for...of:\n```javascript\nfor (const [key, value] of Object.entries(user)) {\n  console.log(`${key}: ${value}`);\n}\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #3\nUse Object.entries on the `car` object and print each key and value in the format:\n`brand: Tesla`"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\n\n// loop over entries and print 'key: value'\n// your code here",
+                "instructions": "Use Object.entries with for...of to print each key-value pair."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 4. Iterating with Array Methods\nYou can combine Object.keys, values, or entries with array methods like `.forEach`, `.map`, `.filter`.\n```javascript\nObject.entries(user).forEach(([key, value]) => {\n  console.log(key, value);\n});\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #4\nUsing Object.values, print only the numeric values from:\n```javascript\nconst stats = { hp: 100, mana: 50, name: 'Hero' };\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const stats = { hp: 100, mana: 50, name: 'Hero' };\n\n// print only numeric values\n// your code here",
+                "instructions": "Use Object.values with forEach and typeof check."
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does Object.keys(obj) return?",
+                "options": [
+                    "An array of keys",
+                    "An array of values",
+                    "An array of [key, value] pairs",
+                    "A number of properties"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What does Object.values(obj) return?",
+                "options": [
+                    "An array of keys",
+                    "An array of values",
+                    "An array of [key, value] pairs",
+                    "A copy of the object"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "What does Object.entries(obj) return?",
+                "options": [
+                    "An array of keys",
+                    "An array of values",
+                    "An array of [key, value] pairs",
+                    "A copy of the object"
+                ],
+                "answerIndex": 2
+            },
+            {
+                "question": "How do you loop over Object.entries?",
+                "options": [
+                    "for...in",
+                    "for...of",
+                    "while",
+                    "do...while"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "Which combination lets you use array methods on objects?",
+                "options": [
+                    "Object.keys/values/entries",
+                    "for...in only",
+                    "Spread syntax",
+                    "Rest syntax"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What will this print?\n```javascript\nconst obj = { a: 1, b: 2 };\nconsole.log(Object.entries(obj)[0]);\n```",
+                "options": [
+                    "[0,1]",
+                    "['a', 1]",
+                    "['b',2]",
+                    "Error"
+                ],
+                "answerIndex": 1
+            }
+        ]
+    },
+    {
+        "id": "objects_advanced",
+        "title": "Advanced Object Manipulation & Optional Chaining",
+        "description": "Learn advanced techniques to manipulate objects, safely access nested properties, and handle dynamic object data.",
+        "steps": [
+            {
+                "type": "theory",
+                "content": "## 🎯 Goal\nUnderstand how to dynamically access properties, use optional chaining, and perform advanced object operations."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 1. Accessing Properties Dynamically\nSometimes you don’t know the key beforehand. Use bracket notation:\n```javascript\nconst user = { name: 'Alice', age: 25 };\nconst key = 'age';\nconsole.log(user[key]); // 25\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #1\nAccess the 'model' property dynamically from:\n```javascript\nconst car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\nconst prop = 'model';\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\nconst prop = 'model';\n\n// dynamically access prop\n// print it",
+                "instructions": "Use bracket notation to access the property dynamically."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 2. Optional Chaining\nOptional chaining `?.` prevents errors when accessing nested properties that might not exist.\n```javascript\nconst user = { name: 'Bob' };\nconsole.log(user.address?.city); // undefined (does not throw error)\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #2\nSafely print `user.address.zip` from:\n```javascript\nconst user = { name: 'Sam' };\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const user = { name: 'Sam' };\n\n// safely print zip\nconsole.log(user.address?.zip);",
+                "instructions": "Use optional chaining to avoid errors."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 3. Deleting Properties\nYou can remove a property using `delete`:\n```javascript\nconst user = { name: 'Alice', age: 25 };\ndelete user.age;\nconsole.log(user); // { name: 'Alice' }\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #3\nDelete the 'year' property from:\n```javascript\nconst car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\n```"
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\n\n// delete 'year' property\n// print car",
+                "instructions": "Use `delete` to remove the property."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 4. Checking Property Existence\nUse `in` operator or `hasOwnProperty`:\n```javascript\nconst user = { name: 'Alice', age: 25 };\nconsole.log('age' in user); // true\nconsole.log(user.hasOwnProperty('email')); // false\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #4\nCheck if 'model' exists in the car object."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const car = { brand: 'Tesla', model: 'Model 3', year: 2023 };\n\n// check if 'model' exists\nconsole.log('model' in car);",
+                "instructions": "Use `in` operator."
+            },
+            {
+                "type": "theory",
+                "content": "## 🔹 5. Merging & Updating Nested Objects\nYou can merge nested objects using spread:\n```javascript\nconst user = { name: 'Bob', address: { city: 'NY', zip: 10001 } };\nconst updated = { ...user, address: { ...user.address, zip: 20002 } };\nconsole.log(updated.address.zip); // 20002\n```"
+            },
+            {
+                "type": "theory",
+                "content": "## 🔸 Mini Challenge #5\nUpdate the zip of:\n```javascript\nconst user = { name: 'Alice', address: { city: 'LA', zip: 90001 } };\n```\nSet zip to 90002 without modifying original object."
+            },
+            {
+                "type": "editor",
+                "startingCode": "const user = { name: 'Alice', address: { city: 'LA', zip: 90001 } };\n\nconst updatedUser = \n\nconsole.log(updatedUser);",
+                "instructions": "Use spread to update nested object."
+            }
+        ],
+        "quiz": [
+            {
+                "question": "What does optional chaining (?.) do?",
+                "options": [
+                    "Deletes a property",
+                    "Prevents errors when accessing missing properties",
+                    "Copies an object",
+                    "Merges objects"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "How do you dynamically access a property?",
+                "options": [
+                    "obj.key",
+                    "obj['key']",
+                    "Both 1 and 2",
+                    "obj(key)"
+                ],
+                "answerIndex": 1
+            },
+            {
+                "question": "How to remove a property from an object?",
+                "options": [
+                    "delete obj.key",
+                    "obj.key = null",
+                    "remove(obj.key)",
+                    "obj.remove(key)"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What does `in` operator do?",
+                "options": [
+                    "Checks if a property exists in an object",
+                    "Deletes a property",
+                    "Copies an object",
+                    "Iterates object"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "How do you update a nested object without mutating original?",
+                "options": [
+                    "Use spread syntax on both outer and inner objects",
+                    "Directly assign nested property",
+                    "Use delete operator",
+                    "You cannot update nested objects"
+                ],
+                "answerIndex": 0
+            },
+            {
+                "question": "What will this print?\n```javascript\nconst user = { name: 'Sam' };\nconsole.log(user.address?.city);\n```",
+                "options": [
+                    "undefined",
+                    "Error",
+                    "null",
+                    "'' (empty string)"
                 ],
                 "answerIndex": 0
             }

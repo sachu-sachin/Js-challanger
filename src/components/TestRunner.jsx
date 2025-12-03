@@ -49,7 +49,7 @@ export function TestRunner({ code, tests, onReset, functionName, parameters, pat
                 }
             }
 
-            const testResults = tests.map((test, index) => {
+            const testResults = (tests || []).map((test, index) => {
                 const capturedLogs = [];
 
                 // Create a safe context for execution
@@ -125,8 +125,45 @@ export function TestRunner({ code, tests, onReset, functionName, parameters, pat
                     // Expected output should be an array of strings
                     const expectedLogs = Array.isArray(test.output) ? test.output.map(String) : [String(test.output)];
 
+                    // Helper for flexible comparison
+                    const flexibleCompare = (actual, expected) => {
+                        if (actual === expected) return true;
+
+                        // Normalize whitespace and quotes for simple string mismatch
+                        const norm = s => s.replace(/\s+/g, '').replace(/'/g, '"');
+                        if (norm(actual) === norm(expected)) return true;
+
+                        // Try object comparison
+                        try {
+                            // Only try if it looks like structure
+                            if (!/^[\[\{]/.test(actual) || !/^[\[\{]/.test(expected.trim())) return false;
+
+                            const actObj = JSON.parse(actual);
+                            // Use Function constructor for loose JS parsing of expected
+                            const expObj = new Function(`return (${expected})`)();
+
+                            // Simple deep equal via JSON (ignores undefined, functions, etc but good enough for this)
+                            // We can sort keys to be safe
+                            const sortKeys = (o) => {
+                                if (Array.isArray(o)) return o.map(sortKeys);
+                                if (typeof o === 'object' && o !== null) {
+                                    return Object.keys(o).sort().reduce((acc, key) => {
+                                        acc[key] = sortKeys(o[key]);
+                                        return acc;
+                                    }, {});
+                                }
+                                return o;
+                            };
+
+                            return JSON.stringify(sortKeys(actObj)) === JSON.stringify(sortKeys(expObj));
+                        } catch (e) {
+                            return false;
+                        }
+                    };
+
                     // Check if logs match
-                    const passed = JSON.stringify(resultLogs) === JSON.stringify(expectedLogs);
+                    const passed = resultLogs.length === expectedLogs.length &&
+                        resultLogs.every((log, i) => flexibleCompare(log, expectedLogs[i]));
 
                     return {
                         input: test.input,

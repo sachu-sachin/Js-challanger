@@ -2,20 +2,34 @@
     {
         "id": "functions_intro",
         "title": "Introduction to Functions",
-        "description": "Learn what functions are, why we use them, and how to define and call them.",
+        "description": "Learn what functions are, why we use them, and how to define and call them through interactive exercises.",
         "steps": [
             {
                 "type": "theory",
-                "content": "## 🔹 What Is a Function?\nA **function** is a reusable block of code designed to perform a specific task.\n\nInstead of writing the same code over and over:\n```javascript\nconsole.log('Hello!');\nconsole.log('Hello!');\nconsole.log('Hello!');\n```\nWe can define a function once and use it many times."
+                "content": "## 🔹 Why Do We Need Functions?\nImagine you want to greet multiple people:\n```javascript\nconsole.log('Hello!');\nconsole.log('Hello!');\nconsole.log('Hello!');\n```\nThis is repetitive. Functions help us **reuse code** without rewriting it."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Try this first:\nfunction greet() {\n    console.log('Hello, World!');\n}\n\n// Now run the code",
+                "instructions": "Run this code as is. Observe what happens."
             },
             {
                 "type": "theory",
-                "content": "## 🔹 Defining and Calling a Function\n### 1. Definition\n```javascript\nfunction greet() {\n    console.log('Hello, World!');\n}\n```\n\n### 2. Call (Invocation)\nThe code inside the function doesn't run until you **call** it:\n```javascript\ngreet(); // Prints: Hello, World!\n```"
+                "content": "### 🔹 Reflection\nYou might have noticed **nothing was printed**. Why?\n- Declaring a function just defines it. \n- It's like writing a recipe: you have the instructions, but you haven't cooked yet.\n\nTo actually execute the code inside, you **have to call the function**."
+            },
+            {
+                "type": "editor",
+                "startingCode": "// Now let's call the function\ngreet(); // This should print 'Hello, World!'",
+                "instructions": "Call the `greet` function to see the output."
+            },
+            {
+                "type": "theory",
+                "content": "### 🔹 Your Turn\nFunctions are reusable. You can call them as many times as you want:\n```javascript\ngreet();\ngreet();\n```\nThis prints 'Hello, World!' twice without rewriting the code."
             },
             {
                 "type": "editor",
                 "startingCode": "// Define a function named 'sayHi'\n// It should print 'Hi there!'\n\n// Call the function",
-                "instructions": "Define the function and call it.",
+                "instructions": "Define the function `sayHi` and call it.",
                 "validate": {
                     "requirements": [
                         {

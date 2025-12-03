@@ -5,24 +5,36 @@
   --color-brand-gold: #D4AF37;
   --color-brand-gold-light: #F4D03F;
   --color-brand-gold-dim: #8A7118;
-  
+
   /* Accents */
-  --color-brand-primary: #D4AF37; /* Mapping primary to gold for now */
-  --color-brand-secondary: #10b981; /* Emerald for success/secondary */
-  
-  /* Surface Colors - Deep Dark */
-  --color-surface-950: #050505; /* Almost black */
-  --color-surface-900: #0a0a0a; /* Very dark gray */
-  --color-surface-800: #171717; /* Dark gray */
-  --color-surface-700: #262626;
-  --color-surface-600: #404040;
+  --color-brand-primary: #D4AF37;
+  /* Mapping primary to gold for now */
+  --color-brand-secondary: #10b981;
+  /* Emerald for success/secondary */
+
+  /* Surface Colors - Rich Slate */
+  --color-surface-950: #0f172a;
+  /* Deep Slate Blue (Main BG) */
+  --color-surface-900: #1e293b;
+  /* Slate 800 (Cards/Panels) */
+  --color-surface-800: #334155;
+  /* Slate 700 (Borders/Secondary) */
+  --color-surface-700: #475569;
+  /* Slate 600 (Hover/Active) */
+  --color-surface-600: #64748b;
+  /* Slate 500 */
 
   /* Text Colors */
-  --color-text-100: #fafafa;
-  --color-text-200: #e5e5e5;
-  --color-text-300: #d4d4d4;
-  --color-text-400: #a3a3a3;
-  --color-text-500: #737373;
+  --color-text-100: #f8fafc;
+  /* Slate 50 */
+  --color-text-200: #e2e8f0;
+  /* Slate 200 */
+  --color-text-300: #cbd5e1;
+  /* Slate 300 */
+  --color-text-400: #94a3b8;
+  /* Slate 400 */
+  --color-text-500: #64748b;
+  /* Slate 500 */
 
   /* Status Colors */
   --color-success: #10b981;
@@ -107,7 +119,10 @@ body {
   color: var(--color-text-200);
 }
 
-.prose h1, .prose h2, .prose h3, .prose h4 {
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
   color: var(--color-text-100);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -121,4 +136,82 @@ body {
 
 .prose ul li::marker {
   color: var(--color-brand-gold);
+}
+
+/* Animations Utility Classes */
+.animate-in {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.slide-in-from-bottom-4 {
+  --tw-enter-translate-y: 1rem;
+  animation-name: enter;
+}
+
+.slide-in-from-bottom-6 {
+  --tw-enter-translate-y: 1.5rem;
+  animation-name: enter;
+}
+
+.slide-in-from-bottom-8 {
+  --tw-enter-translate-y: 2rem;
+  animation-name: enter;
+}
+
+.slide-in-from-bottom-10 {
+  --tw-enter-translate-y: 2.5rem;
+  animation-name: enter;
+}
+
+.slide-in-from-right-8 {
+  --tw-enter-translate-x: 2rem;
+  animation-name: enter;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.duration-700 {
+  animation-duration: 700ms;
+}
+
+.duration-1000 {
+  animation-duration: 1000ms;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
 }
