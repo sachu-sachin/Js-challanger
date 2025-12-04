@@ -5,6 +5,7 @@ import { QuizRunner } from "../components/QuizRunner";
 import { StepNavigator } from "../components/StepNavigator";
 import { ArrowLeft, Menu, X, Circle, PlayCircle } from "lucide-react";
 import topics from "../data/topics.json";
+import { getTaskProgress, markStepComplete, markQuizComplete } from "../utils/progressStorage";
 
 export function TaskPage() {
     const { topicId, taskId } = useParams();
@@ -41,11 +42,31 @@ export function TaskPage() {
             const task = tasks.find((t) => t.id === taskId);
             if (task) {
                 setCurrentTask(task);
-                setCompletedStepIndex(-1); // Reset to start
-                setShowQuiz(false);
+                
+                // Load saved progress
+                const savedProgress = getTaskProgress(topicId, taskId);
+                if (savedProgress) {
+                    // Restore completed steps - find the highest completed step index
+                    if (savedProgress.completedSteps && savedProgress.completedSteps.length > 0) {
+                        const maxCompletedIndex = Math.max(...savedProgress.completedSteps);
+                        setCompletedStepIndex(maxCompletedIndex);
+                        
+                        // If all steps are completed, show quiz if it exists
+                        if (savedProgress.completedSteps.length === task.steps.length && task.quiz) {
+                            setShowQuiz(savedProgress.quizCompleted || false);
+                        }
+                    } else {
+                        setCompletedStepIndex(-1);
+                        setShowQuiz(false);
+                    }
+                } else {
+                    // No saved progress, start fresh
+                    setCompletedStepIndex(-1);
+                    setShowQuiz(false);
+                }
             }
         }
-    }, [tasks, taskId]);
+    }, [tasks, taskId, topicId]);
 
     // Auto-scroll to bottom when a new step is added
     useEffect(() => {
@@ -57,6 +78,17 @@ export function TaskPage() {
     const handleStepComplete = () => {
         const nextIndex = completedStepIndex + 1;
         setCompletedStepIndex(nextIndex);
+
+        // Save progress to localStorage
+        if (currentTask && topicId && taskId) {
+            markStepComplete(
+                topicId,
+                taskId,
+                nextIndex,
+                currentTask.steps.length,
+                !!currentTask.quiz
+            );
+        }
 
         if (nextIndex === currentTask.steps.length - 1) {
             setShowQuiz(true);
@@ -77,6 +109,11 @@ export function TaskPage() {
     };
 
     const handleLessonComplete = () => {
+        // Mark quiz as completed before navigation
+        if (currentTask && topicId && taskId && currentTask.quiz) {
+            markQuizComplete(topicId, taskId, currentTask.steps.length);
+        }
+        
         const currentIndex = tasks.findIndex(t => t.id === taskId);
         if (currentIndex < tasks.length - 1) {
             const nextTask = tasks[currentIndex + 1];
@@ -181,12 +218,19 @@ export function TaskPage() {
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12 pb-32">
-                        {currentTask.steps.map((step, index) => {
-                            // Show steps up to the current one (completedStepIndex + 1)
-                            if (index > completedStepIndex + 1) return null;
+                        {(() => {
+                            // Get saved progress once for all steps
+                            const savedProgress = getTaskProgress(topicId, taskId);
+                            const completedStepsSet = new Set(savedProgress?.completedSteps || []);
+                            
+                            return currentTask.steps.map((step, index) => {
+                                // Show steps up to the current one (completedStepIndex + 1)
+                                // Also show already completed steps from saved progress
+                                const isStepCompleted = completedStepsSet.has(index);
+                                if (index > completedStepIndex + 1 && !isStepCompleted) return null;
 
-                            const isCurrent = index === completedStepIndex + 1;
-                            const isCompleted = index <= completedStepIndex;
+                                const isCurrent = index === completedStepIndex + 1;
+                                const isCompleted = index <= completedStepIndex || isStepCompleted;
 
                             return (
                                 <div
@@ -207,7 +251,8 @@ export function TaskPage() {
                                     )}
                                 </div>
                             );
-                        })}
+                            });
+                        })()}
 
                         {showQuiz && (
                             <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
